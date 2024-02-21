@@ -1,8 +1,12 @@
 # Get all materials containing *at least* a set of elements
 
 This examples describes how to get data for materials containing _at least_ a
-list of elements. For example, get data for all Li-containing materials in
-the Materials Project database.
+list of elements from the Materials Project database.
+
+For example:
+
+- all Li-containing materials (Li + &Alpha;)
+- all materials containing earth abundatn O and Si (O + Si + &Alpha;)
 
 
 ## **materials.summary** endpoint
