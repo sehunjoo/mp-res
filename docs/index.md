@@ -2,11 +2,16 @@
 
 
 
-Materials Project API
+Materials Project API (mp_api)
 
-- [mp_api](https://github.com/materialsproject/api)
-- [mp_api documentation](https://docs.materialsproject.org/downloading-data/how-do-i-download-the-materials-project-database)
+- [github](https://github.com/materialsproject/api)
+    - [mprester.py](https://github.com/materialsproject/api/blob/main/mp_api/client/mprester.py)
+- [documentation](https://docs.materialsproject.org/downloading-data/how-do-i-download-the-materials-project-database)
+- [endpoint & document model](https://next-gen.materialsproject.org/api)
 
 Pymatgen package
 
-- [res.py](https://github.com/materialsproject/pymatgen/blob/v2024.1.27/pymatgen/io/res.py)
+- [github](https://github.com/materialsproject/pymatgen)
+    - [res.py](https://github.com/materialsproject/pymatgen/blob/master/pymatgen/io/res.py)
+- [documentation]
+    - [pymatgen.io.res](https://pymatgen.org/pymatgen.io.html#pymatgen.io.res.ResIO)

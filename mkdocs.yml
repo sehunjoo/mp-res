@@ -110,4 +110,5 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Hands-On Examples:
+    - "available_fields": examples/available_fields/README.md
     - "get_entries()": examples/get_entries/README.md

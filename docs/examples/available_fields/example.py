@@ -11,17 +11,17 @@ def main():
     avfields = mpr.materials.summary.available_fields
 
     print()
-    print("Available fields for materials doc")
+    print("Available fields for SummaryDoc")
     print("-"*80)
     print("\n".join(avfields))
     print("-"*80)
     print()
 
 
-    avfields = mpr.materials.summary.available_fields
+    avfields = mpr.materials.thermo.available_fields
 
     print()
-    print("Available fields for materials doc")
+    print("Available fields for ThermoDoc")
     print("-"*80)
     print("\n".join(avfields))
     print("-"*80)
