@@ -1,0 +1,152 @@
+#!/bin/bash
+
+<<COMMENT
+Name:
+    mp_chain
+
+Description:
+    retrieve materials project data for a specified chemical system
+
+Dependencies:
+    mp_query.py
+    i2o_poscar2res
+COMMENT
+
+
+set -e
+
+function usage {
+    echo 1>&2 "Usage: $(basename $0) <chemical system> <maxnatom>"
+    echo 1>&2 "       $(basename $0) Li-Ni-O"
+    exit 127
+}
+
+# Check arguments
+
+if [ $# -ne 2 ]; then
+    usage
+fi
+
+chemsys=$1
+maxnatom=$2
+workdir=$(pwd)
+
+
+# Create before proceeding
+
+if ! which mp_query.py &>/dev/null; then
+    echo "$(basename $0) Warning: mp_query.py not found" 1>&2
+    exit 127
+fi
+
+if ! which i2o_poscar2res &>/dev/null; then
+    echo "$(basename $0) Warning: i2o_poscar2res not found" 1>&2
+    exit 127
+fi
+
+# Retrieve/download data from Materials Project database
+
+function mp2res {
+    
+    echo "Retrieve structures in POSCAR format ..."
+    
+    mkdir -p mp2res
+    cd mp2res
+    
+    mp_query.py -el "$chemsys" -f POSCAR &>/dev/null
+    #mp_query.py -el "$chemsys" -in $maxnatom -f POSCAR &>/dev/null
+
+    echo "number of structures: $(tail -n +2 mp.csv | wc -l)"
+    
+    echo "Convert POSCAR to RES ..."
+    
+    find . -maxdepth 1 -name "*.POSCAR" | sed 's|.*/||' > poscar2res.txt
+    
+    cat poscar2res.txt | parallel --progress "i2o_poscar2res {.}; if [ -s {.}.res ]; then mkdir -p good_poscar good_res && mv {} good_poscar && mv {.}.res good_res; else mkdir -p bad_poscar && mv {} bad_poscar; fi;" 2> poscar2res.err
+
+    if [ -d ./bad_poscar ]; then
+        echo "file conversion failure" && exit 1
+    fi
+
+    mv ./good_res/*.res ./
+
+    rm -rf good_poscar bad_poscar good_res
+
+}    
+
+
+# Preprocessing for crud run
+
+function prepcrud {
+    
+    # Convert into primitive cells and niggli-reduced structures
+    #   prim updates the space group, which is determined with a tolerance of 0.1.
+    
+    echo "Convert to primitive cell ..."
+    
+    prim 2>/dev/null
+    
+    echo "Convert to niggli-reduced cell ..."
+    
+    niggli | sed -n '/^Changing/p' | wc -l
+    niggli | sed -n '/^Changing/p' | wc -l
+    
+    # Initialize spin
+    
+    echo "Intialize spin ..."
+    
+    ls *.res | parallel --progress "res_initspin.py {.} > {.}.res.spin && mv {.}.res.spin {.}.res" 2>/dev/null
+    
+
+    # Move small structures to hopper
+
+    echo "Moving structures ..."
+
+    ca -l -r -in -$maxnatom 2>/dev/null | awk '{print $1}' > mp2res-list.txt
+    sed 's/^.*\(mp-[0-9]*\).*$/\1/' mp2res-list.txt > mp2res-mpid.txt
+
+
+    mkdir -p $workdir/hopper
+    
+    find $workdir/hopper -maxdepth 1 -name "*.res" | sed 's|.*/||' > $workdir/mp-list.temp
+    find $workdir -maxdepth 1 -name "*.res" | sed 's|.*/||' >> $workdir/mp-list.temp
+    [[ -d $workdir/good_castep ]] && find $workdir/good_castep -maxdepth 1 -name "*.res" | sed 's|.*/||' >> $workdir/mp-list.temp
+    [[ -d $workdir/bad_castep ]] && find $workdir/bad_castep -maxdepth 1 -name "*.res" | sed 's|.*/||' >> $workdir/mp-list.temp
+    
+    cat $workdir/mp-list.temp | sed 's/.res//g' > $workdir/mp-list.txt && rm -f $workdir/mp-list.temp
+    cat $workdir/mp-list.txt | sed 's/^.*\(mp-[0-9]*\).*$/\1/' > $workdir/mp-mpid.txt
+
+
+    cnt=0
+    for seed in $(cat mp2res-list.txt)
+    do
+        mpid=${seed#*-}
+        num_mpid=$(sed -n "/${mpid}$/p" $workdir/mp-mpid.txt | wc -l)
+        if [ $num_mpid -eq 0 ]; then
+            mv $seed.res $workdir/hopper
+            cnt=$((cnt + 1))
+        else
+            rm -f $seed.res
+        fi
+    done
+    
+    echo "$cnt structures are added"
+
+
+    # Remove large structures 
+
+    nlarge=$(ca -l -r 2>/dev/null | wc -l)
+    [ $nlarge -gt 0 ] && echo "Delete $nlarge structures with more than $maxnatom atoms ..." && rm -rf *.res
+
+}
+
+####################################################################
+
+mp2res
+
+prepcrud
+
+
+echo "Complete: $(date)"
+
+exit 0

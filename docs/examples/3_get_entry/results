@@ -1,0 +1,502 @@
+<class 'list'>
+number of entries retrived: 25
+mp-976411-R2SCAN ComputedStructureEntry - Li4          (Li)
+Energy (Uncorrected)     = -9.5233   eV (-2.3808  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -9.5233   eV (-2.3808  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-03-07 08:23:19.197000
+  task_id                = mp-1976760
+  material_id            = mp-976411
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-10173-R2SCAN ComputedStructureEntry - Li2          (Li)
+Energy (Uncorrected)     = -4.7614   eV (-2.3807  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -4.7614   eV (-2.3807  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-03-05 20:25:49.387000
+  task_id                = mp-1959576
+  material_id            = mp-10173
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-51-R2SCAN ComputedStructureEntry - Li1          (Li)
+Energy (Uncorrected)     = -2.3850   eV (-2.3850  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -2.3850   eV (-2.3850  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-03-04 02:53:51.404000
+  task_id                = mp-1943879
+  material_id            = mp-51
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-10173-R2SCAN ComputedStructureEntry - Li2          (Li)
+Energy (Uncorrected)     = -4.7614   eV (-2.3807  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -4.7614   eV (-2.3807  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-03-05 20:25:49.387000
+  task_id                = mp-1959576
+  material_id            = mp-10173
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-135-R2SCAN ComputedStructureEntry - Li1          (Li)
+Energy (Uncorrected)     = -2.3771   eV (-2.3771  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -2.3771   eV (-2.3771  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-03-04 04:04:38.533000
+  task_id                = mp-1943895
+  material_id            = mp-135
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-1063005-R2SCAN ComputedStructureEntry - Li3          (Li)
+Energy (Uncorrected)     = -7.1131   eV (-2.3710  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -7.1131   eV (-2.3710  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-03-03 22:32:48.744000
+  task_id                = mp-1948557
+  material_id            = mp-1063005
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-1063005-GGA ComputedStructureEntry - Li3          (Li)
+Energy (Uncorrected)     = -5.6710   eV (-1.8903  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -5.6710   eV (-1.8903  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 23Jan2001', 'hash': '4799bab014a83a07c654d7196c8ecfa9'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = GGA
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2020-05-03 23:04:42.910000
+  task_id                = mp-1425567
+  material_id            = mp-1063005
+  oxidation_states       = {}
+  run_type               = GGA
+----------------------------------------------------------------------------------------------------
+mp-10173-GGA ComputedStructureEntry - Li2          (Li)
+Energy (Uncorrected)     = -3.8128   eV (-1.9064  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -3.8128   eV (-1.9064  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 23Jan2001', 'hash': '4799bab014a83a07c654d7196c8ecfa9'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = GGA
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2022-06-09 03:35:56.693000
+  task_id                = mp-2298988
+  material_id            = mp-10173
+  oxidation_states       = {}
+  run_type               = GGA
+----------------------------------------------------------------------------------------------------
+mp-976411-GGA ComputedStructureEntry - Li4          (Li)
+Energy (Uncorrected)     = -7.6245   eV (-1.9061  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -7.6245   eV (-1.9061  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 23Jan2001', 'hash': '4799bab014a83a07c654d7196c8ecfa9'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = GGA
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2020-05-02 05:28:44.295000
+  task_id                = mp-1398010
+  material_id            = mp-976411
+  oxidation_states       = {}
+  run_type               = GGA
+----------------------------------------------------------------------------------------------------
+mp-51-GGA ComputedStructureEntry - Li1          (Li)
+Energy (Uncorrected)     = -1.9060   eV (-1.9060  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -1.9060   eV (-1.9060  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 23Jan2001', 'hash': '4799bab014a83a07c654d7196c8ecfa9'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = GGA
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2020-05-03 10:30:18.729000
+  task_id                = mp-1442053
+  material_id            = mp-51
+  oxidation_states       = {}
+  run_type               = GGA
+----------------------------------------------------------------------------------------------------
+mp-135-GGA ComputedStructureEntry - Li1          (Li)
+Energy (Uncorrected)     = -1.9038   eV (-1.9038  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -1.9038   eV (-1.9038  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 23Jan2001', 'hash': '4799bab014a83a07c654d7196c8ecfa9'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = GGA
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2020-05-02 23:41:40.352000
+  task_id                = mp-1440853
+  material_id            = mp-135
+  oxidation_states       = {}
+  run_type               = GGA
+----------------------------------------------------------------------------------------------------
+mp-1018134-R2SCAN ComputedStructureEntry - Li3          (Li)
+Energy (Uncorrected)     = -7.1601   eV (-2.3867  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -7.1601   eV (-2.3867  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-03-05 01:28:18.016000
+  task_id                = mp-1945769
+  material_id            = mp-1018134
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-1063005-R2SCAN ComputedStructureEntry - Li3          (Li)
+Energy (Uncorrected)     = -7.1131   eV (-2.3710  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -7.1131   eV (-2.3710  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-03-03 22:32:48.744000
+  task_id                = mp-1948557
+  material_id            = mp-1063005
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-567337-R2SCAN ComputedStructureEntry - Li8          (Li)
+Energy (Uncorrected)     = -19.0231  eV (-2.3779  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -19.0231  eV (-2.3779  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-07-24 01:29:21.323000
+  task_id                = mp-2739111
+  material_id            = mp-567337
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-1018134-R2SCAN ComputedStructureEntry - Li3          (Li)
+Energy (Uncorrected)     = -7.1601   eV (-2.3867  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -7.1601   eV (-2.3867  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-03-05 01:28:18.016000
+  task_id                = mp-1945769
+  material_id            = mp-1018134
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-567337-R2SCAN ComputedStructureEntry - Li8          (Li)
+Energy (Uncorrected)     = -19.0231  eV (-2.3779  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -19.0231  eV (-2.3779  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-07-24 01:29:21.323000
+  task_id                = mp-2739111
+  material_id            = mp-567337
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-51-R2SCAN ComputedStructureEntry - Li1          (Li)
+Energy (Uncorrected)     = -2.3850   eV (-2.3850  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -2.3850   eV (-2.3850  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-03-04 02:53:51.404000
+  task_id                = mp-1943879
+  material_id            = mp-51
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-1103107-GGA ComputedStructureEntry - Li12         (Li)
+Energy (Uncorrected)     = -22.2425  eV (-1.8535  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -22.2425  eV (-1.8535  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 23Jan2001', 'hash': '4799bab014a83a07c654d7196c8ecfa9'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = GGA
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-02-09 22:00:53.699000
+  task_id                = mp-1927602
+  material_id            = mp-1103107
+  oxidation_states       = {}
+  run_type               = GGA
+----------------------------------------------------------------------------------------------------
+mp-604313-GGA ComputedStructureEntry - Li4          (Li)
+Energy (Uncorrected)     = -6.5885   eV (-1.6471  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -6.5885   eV (-1.6471  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 23Jan2001', 'hash': '4799bab014a83a07c654d7196c8ecfa9'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = GGA
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2020-05-04 00:04:19.858000
+  task_id                = mp-1418694
+  material_id            = mp-604313
+  oxidation_states       = {}
+  run_type               = GGA
+----------------------------------------------------------------------------------------------------
+mp-567337-GGA ComputedStructureEntry - Li8          (Li)
+Energy (Uncorrected)     = -15.1844  eV (-1.8981  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -15.1844  eV (-1.8981  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 23Jan2001', 'hash': '4799bab014a83a07c654d7196c8ecfa9'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = GGA
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2020-11-10 20:14:44.544000
+  task_id                = mp-1786230
+  material_id            = mp-567337
+  oxidation_states       = {}
+  run_type               = GGA
+----------------------------------------------------------------------------------------------------
+mp-976411-R2SCAN ComputedStructureEntry - Li4          (Li)
+Energy (Uncorrected)     = -9.5233   eV (-2.3808  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -9.5233   eV (-2.3808  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-03-07 08:23:19.197000
+  task_id                = mp-1976760
+  material_id            = mp-976411
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-135-R2SCAN ComputedStructureEntry - Li1          (Li)
+Energy (Uncorrected)     = -2.3771   eV (-2.3771  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -2.3771   eV (-2.3771  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-03-04 04:04:38.533000
+  task_id                = mp-1943895
+  material_id            = mp-135
+  oxidation_states       = {}
+  run_type               = R2SCAN
+----------------------------------------------------------------------------------------------------
+mp-604313-GGA ComputedStructureEntry - Li4          (Li)
+Energy (Uncorrected)     = -6.5885   eV (-1.6471  eV/atom)
+Correction               = -1.9111   eV (-0.4778  eV/atom)
+Energy (Final)           = -8.4996   eV (-2.1249  eV/atom)
+Energy Adjustments:
+  MP GGA(+U)/R2SCAN mixing adjustment: -1.9111   eV (-0.4778  eV/atom)
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 23Jan2001', 'hash': '4799bab014a83a07c654d7196c8ecfa9'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = GGA
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2020-05-04 00:04:19.858000
+  task_id                = mp-1418694
+  material_id            = mp-604313
+  oxidation_states       = {}
+  run_type               = GGA
+----------------------------------------------------------------------------------------------------
+mp-1103107-GGA ComputedStructureEntry - Li12         (Li)
+Energy (Uncorrected)     = -22.2425  eV (-1.8535  eV/atom)
+Correction               = -5.7334   eV (-0.4778  eV/atom)
+Energy (Final)           = -27.9759  eV (-2.3313  eV/atom)
+Energy Adjustments:
+  MP GGA(+U)/R2SCAN mixing adjustment: -5.7334   eV (-0.4778  eV/atom)
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 23Jan2001', 'hash': '4799bab014a83a07c654d7196c8ecfa9'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = GGA
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2021-02-09 22:00:53.699000
+  task_id                = mp-1927602
+  material_id            = mp-1103107
+  oxidation_states       = {}
+  run_type               = GGA
+----------------------------------------------------------------------------------------------------
+mp-1018134-GGA ComputedStructureEntry - Li3          (Li)
+Energy (Uncorrected)     = -5.7268   eV (-1.9089  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -5.7268   eV (-1.9089  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 23Jan2001', 'hash': '4799bab014a83a07c654d7196c8ecfa9'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = GGA
+Data:
+  oxide_type             = None
+  aspherical             = True
+  last_updated           = 2020-11-11 19:28:34.990000
+  task_id                = mp-1790957
+  material_id            = mp-1018134
+  oxidation_states       = {}
+  run_type               = GGA
+----------------------------------------------------------------------------------------------------
