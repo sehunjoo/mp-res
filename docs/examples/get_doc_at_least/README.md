@@ -13,7 +13,7 @@ You can get a list of SummaryDoc for all materials containing at least a list
 of elements specified to the `elements` argument, as follows:
 
 ``` python
-mpr.materials.summary.search(
+docs = mpr.materials.summary.search(
     elements=elements
 )
 ```
@@ -21,7 +21,7 @@ mpr.materials.summary.search(
 For example:
 
 ``` python
-mpr.materials.summary.search(
+docs = mpr.materials.summary.search(
     elements=["Li"]
 )
 ```
@@ -31,7 +31,7 @@ Materials Project database. It returns a total of 21686 SummaryDoc with 3372
 unique chemsys and 1-8 elements.
 
 ``` python
-mpr.materials.summary.search(
+docs = mpr.materials.summary.search(
     elements=["Li", "Ni", "O"]
 )
 ```
@@ -51,6 +51,21 @@ SummaryDoc with 147 unique chemsys and 3-6 elements.
     or materials_ids using `mpr.materials.summary.search`.
     For more information, please see [thermo.py](https://github.com/materialsproject/api/blob/main/mp_api/client/routes/materials/thermo.py)
 
+``` python
+                                                                                                                        
+docs = mpr.materials.summary.search(                                                                                
+    elements=["Li"],                                                                                              
+    fields=["chemsys"]
+)                                                                                                                   
+                                                                                                                    
+chemsys = [doc.chemsys for doc in docs]                                                                             
+chemsys = list(dict.fromkeys(chemsys))                                                                              
+                                                                                                                    
+docs = mpr.materials.thermo.search(                                                                                 
+    chemsys=chemsys,                                                                                                
+)                                                                                                                   
+```
+                                                                                                               
 
 
 
@@ -59,12 +74,12 @@ SummaryDoc with 147 unique chemsys and 3-6 elements.
 !!! warning "Long list of material/moldcule IDs"
 
     When you try to get a list of `materials_id` from the `materials.summary`
-    end point and use it as input to the `materials.thermo` end point, you can
+    endpoint and use it as input to the `materials.thermo` endpoint, you can
     get the following error: 
 
     ``` python
-    elements=["Li"]                                                                                                     
-    fields=["nelements", "chemsys"]                                                                                     
+    elements=["Li"]
+    fields=["nelements", "chemsys"]
                                                                                                                         
     docs = mpr.materials.summary.search(                                                                                
         elements=elements,                                                                                              
@@ -89,17 +104,26 @@ SummaryDoc with 147 unique chemsys and 3-6 elements.
 
 
 
-!!! warning "Wild cards for chemsys"
+!!! warning "Wild cards in chemsys"
 
-    The wild cards in chemsys doens't seem to work as what I expect. The number
-    of docs are different from the one obatained as above.
+    wild cards in chemsys don't seem to work as expected.
+    Each `*` just replace on element in a chemsys. For example:
 
     ```
     docs = mpr.materials.thermo.search(                                                                                 
-        chemsys=["Li-*", "*-Li-*", "*-Li", "Li"],                                                                       
-        fields=fields                                                                                                   
+        chemsys=['Li-*', '*-Li']
     )
     ```
 
+    gives only binary Li-containing compounds.
+
+    ```
+    docs = mpr.materials.thermo.search(                                                                                 
+        chemsys=['Li-*-*', '*-Li-*', '*-*-Li']
+    )
+    ```
+
+    gives only ternary Li-containing compounds.
+
     I would recommend getting a list of `chemsys` from the `materials.summary`
-    end point.
+    endpoint.
