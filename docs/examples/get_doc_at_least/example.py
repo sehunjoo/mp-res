@@ -34,7 +34,8 @@ def example_materials_summary():
 
 def example_materials_thermo():
 
-    elements=["Li"]
+    #elements=["Li"]
+    elements=["Li", "Ni", "O"]
     fields=["nelements", "chemsys"]
 
     docs = mpr.materials.summary.search(

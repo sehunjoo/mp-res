@@ -56,6 +56,24 @@ and then be used as input to materials.chemsys endpoint as follows:
 ``` python
                                                                                                                         
 docs = mpr.materials.summary.search(                                                                                
+    elements=elements,                                                                                              
+    fields=["chemsys"]
+)                                                                                                                   
+                                                                                                                    
+chemsys = [doc.chemsys for doc in docs]                                                                             
+chemsys = list(dict.fromkeys(chemsys))                                                                              
+                                                                                                                    
+docs = mpr.materials.thermo.search(                                                                                 
+    chemsys=chemsys,                                                                                                
+)                                                                                                                   
+```
+
+### Examples
+
+
+``` python
+                                                                                                                        
+docs = mpr.materials.summary.search(                                                                                
     elements=["Li"],                                                                                              
     fields=["chemsys"]
 )                                                                                                                   
@@ -67,6 +85,27 @@ docs = mpr.materials.thermo.search(
     chemsys=chemsys,                                                                                                
 )                                                                                                                   
 ```
+
+This returns a total of 45197 ThermoDoc with 3372 unique chemsys and 1-8
+elements.
+
+``` python
+                                                                                                                        
+docs = mpr.materials.summary.search(                                                                                
+    elements=["Li", "Ni", "O"],                                                                                              
+    fields=["chemsys"]
+)                                                                                                                   
+                                                                                                                    
+chemsys = [doc.chemsys for doc in docs]                                                                             
+chemsys = list(dict.fromkeys(chemsys))                                                                              
+                                                                                                                    
+docs = mpr.materials.thermo.search(                                                                                 
+    chemsys=chemsys,                                                                                                
+)                                                                                                                   
+```
+
+This returns a total of 2828 ThermoDoc with 147 unique chemsys and 3-6
+elements.
                                                                                                                
 
 
