@@ -111,4 +111,5 @@ nav:
   - Home: index.md
   - Examples:
     - "available_fields": "examples/available_fields/README.md"
-    - "get_entries()": "examples/get_entries/README.md"
+    - "get_doc_at_least:": "example/get_doc_at_least/README.md"
+    - "get_entries": "examples/get_entries/README.md"
