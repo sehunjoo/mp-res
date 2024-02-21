@@ -18,7 +18,7 @@ docs = mpr.materials.summary.search(
 )
 ```
 
-For example:
+### Examples
 
 ``` python
 docs = mpr.materials.summary.search(
