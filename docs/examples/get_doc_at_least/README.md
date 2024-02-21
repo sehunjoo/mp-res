@@ -1,32 +1,49 @@
-# getting data
+# Get all materials containing *at least* a set of elements
 
 This examples describes how to get data for materials containing _at least_ a
 list of elements. For example, get data for all Li-containing materials in
 the Materials Project database.
 
-## materials.summary
+
+## materials.summary end point
+
+---
+
+You can get a list of SummaryDoc for all materials containing at least a list
+of elements specified to the `elements` argument, as follows:
 
 ``` python
-mpr.materials.summary.search(elements=elements)
+mpr.materials.summary.search(
+    elements=elements
+)
 ```
 
-For example,
+For example:
 
 ``` python
-mpr.materials.summary.search(elements=["Li"])
+mpr.materials.summary.search(
+    elements=["Li"]
+)
 ```
 
-This will give SummaryDoc for all Li-containing materials. You will get 21686
-materials with 1-8 elements.
+The above returns a list of SummaryDoc for all Li-contatining materials from the
+Materials Project database. It returns a total of 21686 SummaryDoc with 3372
+unique chemsys and 1-8 elements.
 
 ``` python
-mpr.materials.summary.search(elements=["Li", "Ni", "O"])
+mpr.materials.summary.search(
+    elements=["Li", "Ni", "O"]
+)
 ```
 
-## materials.thermo
+This returns a list of SummaryDoc for all materials containing at least Li, Ni,
+and O elements from the Materials Project database. It returns a total of 1394
+SummaryDoc with 147 unique chemsys and 3-6 elements.
 
-This will give SummaryDoc for all materials contatining at least Li, Ni, O,
-elements. You will get 1394 materials with 3-6 elements.
+
+## materials.thermo end point
+
+---
 
 !!! note "Note"
     `mpr.materials.thermo.search` do not support this functionality. It only
@@ -37,11 +54,30 @@ elements. You will get 1394 materials with 3-6 elements.
 
 
 
+
+
 !!! warning "Long list of material/moldcule IDs"
 
     When you try to get a list of `materials_id` from the `materials.summary`
     end point and use it as input to the `materials.thermo` end point, you can
     get the following error: 
+
+    ``` python
+    elements=["Li"]                                                                                                     
+    fields=["nelements", "chemsys"]                                                                                     
+                                                                                                                        
+    docs = mpr.materials.summary.search(                                                                                
+        elements=elements,                                                                                              
+        fields=["material_id"]                                                                                          
+    )                                                                                                                   
+                                                                                                                        
+    material_ids = [doc.material_id for doc in docs]                                                                    
+                                                                                                                        
+    docs = mpr.materials.thermo.search(                                                                                 
+        material_ids=material_ids,                                                                                      
+        fields=fields                                                                                                   
+    )      
+    ```
 
     ```
     ValueError: List of material/molecule IDs provided is too long. Consider
@@ -53,7 +89,7 @@ elements. You will get 1394 materials with 3-6 elements.
 
 
 
-!!! warning "wild cards for chemsys"
+!!! warning "Wild cards for chemsys"
 
     The wild cards in chemsys doens't seem to work as what I expect. The number
     of docs are different from the one obatained as above.

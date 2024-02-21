@@ -10,6 +10,7 @@ mpr = MPRester(api_key)
 def example_materials_summary():
 
     elements=["Li"]
+    #elements=["Li", "Ni", "O"]
     fields=["nelements", "chemsys"]
 
     docs = mpr.materials.summary.search(
@@ -18,18 +19,23 @@ def example_materials_summary():
     )
 
     chemsys = [doc.chemsys for doc in docs]
-    chemsys_unique = list(dict.fromkeys(chemsys))
-    print("\n".join(chemsys_unique))
+    chemsys = list(dict.fromkeys(chemsys))
 
     nelements = [doc.nelements for doc in docs]
-    nelements_unique = list(dict.fromkeys(nelements))
-    print(nelements_unique)
+    nelements = list(dict.fromkeys(nelements))
 
-def example_materials_thermo_id_fail():
+    print(f"# SummaryDoc = {len(docs)}")
+    print(f"# chemsys    = {len(chemsys)}")
+    print(f"# nelements  = {min(nelements)}-{max(nelements)}")
+    #print("\n".join(chemsys_unique))
+    #print(nelements_unique)
+
+
+def error_example_materials_thermo_id():
 
 
     elements=["Li"]
-    fields=["nelements"]
+    fields=["nelements", "chemsys"]
 
     docs = mpr.materials.summary.search(
         elements=elements,
@@ -43,12 +49,9 @@ def example_materials_thermo_id_fail():
         fields=fields
     )
 
-    nelements = [doc.nelements for doc in docs]
-    nelements_unique = list(dict.fromkeys(nelements))
-    print(nelements_unique)
 
 
-def main():
+def example():
 
 
     elements=["Li"]
@@ -83,6 +86,9 @@ def main():
         fields=fields
     )
     
+def main():
+    #example_materials_summary()
 
+    error_example_materials_thermo_id()
 
 main()
