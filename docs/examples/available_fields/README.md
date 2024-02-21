@@ -16,7 +16,7 @@ available_fields = mpr.materials.summary.available_fields
 available_feilds = mpr.materials.thermo.available_fields
 ```
 
-!!! abstract "Available fields for `materials.summary` endpoint with `SummaryDoc`
+!!! abstract "Available fields for `materials.summary` endpoint with `SummaryDoc`"
     ```
     builder_meta
     nsites
