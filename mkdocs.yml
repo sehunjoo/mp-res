@@ -111,5 +111,6 @@ nav:
   - Home: index.md
   - Examples:
     - "available_fields": "examples/available_fields/README.md"
-    - "get element-containig materials": "examples/get_doc_at_least/README.md"
+    - "get materials under X chemical system": "examples/get_doc_at_least/README.md"
+    - "get X-containig materials": "examples/get_doc_at_least/README.md"
     - "get_entries": "examples/get_entries/README.md"

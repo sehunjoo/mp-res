@@ -72,7 +72,6 @@ docs = mpr.materials.thermo.search(
 
 
 ``` python
-                                                                                                                        
 docs = mpr.materials.summary.search(                                                                                
     elements=["Li"],                                                                                              
     fields=["chemsys"]
@@ -90,7 +89,6 @@ This returns a total of 45197 ThermoDoc with 3372 unique chemsys and 1-8
 elements.
 
 ``` python
-                                                                                                                        
 docs = mpr.materials.summary.search(                                                                                
     elements=["Li", "Ni", "O"],                                                                                              
     fields=["chemsys"]
