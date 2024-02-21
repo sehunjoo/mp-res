@@ -5,7 +5,7 @@ list of elements. For example, get data for all Li-containing materials in
 the Materials Project database.
 
 
-## *materials.summary* endpoint
+## **materials.summary** endpoint
 
 ---
 
@@ -41,15 +41,17 @@ and O elements from the Materials Project database. It returns a total of 1394
 SummaryDoc with 147 unique chemsys and 3-6 elements.
 
 
-## *materials.thermo* endpoint
+## **materials.thermo** endpoint
 
 ---
 
-!!! note "Note"
-    `mpr.materials.thermo.search` do not support this functionality. It only
-    support chemsys and materials_id. So you should generate a list of chemsys
-    or materials_ids using `mpr.materials.summary.search`.
-    For more information, please see [thermo.py](https://github.com/materialsproject/api/blob/main/mp_api/client/routes/materials/thermo.py)
+From the materials.thermo endpoint, you can't get a list of ThermoDoc for all
+materials containing a set of elements. materials.thermo do not support
+`elements` arguments. `materials_id` and `chemsys` are only available. 
+For more information, please see [thermo.py](https://github.com/materialsproject/api/blob/main/mp_api/client/routes/materials/thermo.py)
+
+Therefore, a list of chemsys should be generated from materials.summary endpoint
+and then be used as input to materials.chemsys endpoint as follows:
 
 ``` python
                                                                                                                         
