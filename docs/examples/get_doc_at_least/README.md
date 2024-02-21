@@ -5,7 +5,7 @@ list of elements. For example, get data for all Li-containing materials in
 the Materials Project database.
 
 
-## `materials.summary` endpoint
+## *materials.summary* endpoint
 
 ---
 
@@ -41,7 +41,7 @@ and O elements from the Materials Project database. It returns a total of 1394
 SummaryDoc with 147 unique chemsys and 3-6 elements.
 
 
-## `materials.thermo` endpoint
+## *materials.thermo* endpoint
 
 ---
 
