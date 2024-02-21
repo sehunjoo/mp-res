@@ -112,9 +112,9 @@ nav:
   - Examples:
     - Getting Doc:
         - "Basic": "examples/available_fields/README.md"
-        - "get materials under X chemical system": "examples/get_doc_chemsys/README.md"
+        - "get X chemical system": "examples/get_doc_chemsys/README.md"
         - "get X-containig materials": "examples/get_doc_at_least/README.md"
     - Getting Entry:
         - "Basic": "examples/get_entry/README.md"
-        - "get materials under X chemical system": "examples/get_entry_chemsys/README.md"
+        - "get X chemical system": "examples/get_entry_chemsys/README.md"
         - "get X-containing materials": "examples/get_entry_elements/README.md"

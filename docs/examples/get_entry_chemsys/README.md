@@ -9,51 +9,6 @@ For example:
 - all elemental, binary, ternary compounds in Li-Ni-O chemical system.
 
 
-## **get_entries()** function
-
----
-
-``` python
-entries = mpr.get_entries(
-    chemsys_formula_mpids
-    compatible_only=True,
-    property_data=None,
-    conventional_unit_cell=False,
-    additional_criteria=None,
-)
-```
-
-??? info "Arguments"
-    chemsys_formula_mpids (str, List[str]): A chemical system, list of chemical
-systems
-        (e.g., Li-Fe-O, Si-*, [Si-O, Li-Fe-P]), formula, list of formulas
-        (e.g., Fe2O3, Si*, [SiO2, BiFeO3]), Materials Project ID, or list of
-Materials
-        Project IDs (e.g., mp-22526, [mp-22526, mp-149]).
-    compatible_only (bool): Whether to return only "compatible"
-        entries. Compatible entries are entries that have been
-        processed using the MaterialsProject2020Compatibility class,
-        which performs adjustments to allow mixing of GGA and GGA+U
-        calculations for more accurate phase diagrams and reaction
-        energies. This data is obtained from the core "thermo" API endpoint.
-    property_data (list): Specify additional properties to include in
-        entry.data. If None, only default data is included. Should be a subset
-of
-        input parameters in the 'MPRester.thermo.available_fields' list.
-    conventional_unit_cell (bool): Whether to get the standard
-        conventional unit cell
-    additional_criteria (dict): Any additional criteria to pass. The keys and
-values should
-        correspond to proper function inputs to `MPRester.thermo.search`. For
-instance,
-        if you are only interested in entries on the convex hull, you could pass
-        {"energy_above_hull": (0.0, 0.0)} or {"is_stable": True}.
-
-
-
-You can get a list of ComputedStructureEntry for all materials containing only a
-hyphenated list of elements specified to the `chemsys` argument, as follows:
-
 ``` python
 entries = mpr.get_entries(
     chemsys_formula_mpids=chemsys
