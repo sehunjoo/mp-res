@@ -67,19 +67,22 @@ further details.
 
 ### Download data
 
-`mpr.get_entries()` return a list of computed entries
+`mpr.get_entries()` returns a list of ComputedStructureEntry
 
 ``` python
 entries = mpr.get_entries("Li")
-
-print(type(entries))
-
-for entry in entries:
-    print(type(entry))
 ```
 
-Tye type of entries is `<class 'list'>`.
-The type of each entry in the list is `<class 'pymatgen.entries.computed_entries.ComputedStructureEntry'>`
+!!! note "Note"
+    ``` python
+    print(type(entries))
+    
+    for entry in entries:
+        print(type(entry))
+    ```
+    
+    The type of entries is `<class 'list'>`.
+    The type of each entry in the list is `<class 'pymatgen.entries.computed_entries.ComputedStructureEntry'>`
 
 There are more functions to get entries, but they are high-level functions
 based on `get_entries()`.
@@ -87,7 +90,9 @@ based on `get_entries()`.
 ``` python
 entries = mpr.get_entries_in_chemsys(elements=["Li", "Ni", "O"])
 entries = mpr.get_entry_by_material_id(material_id="mp-135")
+```
 
+### Get properties from ComputedStructureEntry
 
 ``` python
 entries = mpr.get_entries("Li")
@@ -98,9 +103,6 @@ for entry in entries:
     print("-"*100)
 ```
 
-```
-
-You can get properties from 
 
 ### Save to RES files
 
