@@ -51,64 +51,64 @@ SummaryDoc with 147 unique chemsys and 3-6 elements.
 
 From the materials.thermo endpoint, you can't get a list of ThermoDoc for all
 materials containing a set of elements. materials.thermo do not support
-`elements` arguments. `materials_id` and `chemsys` are only available. 
+`elements` arguments. `materials_id` and `chemsys` are only available.
 For more information, please see [thermo.py](https://github.com/materialsproject/api/blob/main/mp_api/client/routes/materials/thermo.py)
 
 Therefore, a list of chemsys should be generated from materials.summary endpoint
 and then be used as input to materials.chemsys endpoint as follows:
 
 ``` python
-                                                                                                                        
-docs = mpr.materials.summary.search(                                                                                
-    elements=elements,                                                                                              
+
+docs = mpr.materials.summary.search(
+    elements=elements,
     fields=["chemsys"]
-)                                                                                                                   
-                                                                                                                    
-chemsys = [doc.chemsys for doc in docs]                                                                             
-chemsys = list(dict.fromkeys(chemsys))                                                                              
-                                                                                                                    
-docs = mpr.materials.thermo.search(                                                                                 
-    chemsys=chemsys,                                                                                                
-)                                                                                                                   
+)
+
+chemsys = [doc.chemsys for doc in docs]
+chemsys = list(dict.fromkeys(chemsys))
+
+docs = mpr.materials.thermo.search(
+    chemsys=chemsys,
+)
 ```
 
 ### Examples
 
 
 ``` python
-docs = mpr.materials.summary.search(                                                                                
-    elements=["Li"],                                                                                              
+docs = mpr.materials.summary.search(
+    elements=["Li"],
     fields=["chemsys"]
-)                                                                                                                   
-                                                                                                                    
-chemsys = [doc.chemsys for doc in docs]                                                                             
-chemsys = list(dict.fromkeys(chemsys))                                                                              
-                                                                                                                    
-docs = mpr.materials.thermo.search(                                                                                 
-    chemsys=chemsys,                                                                                                
-)                                                                                                                   
+)
+
+chemsys = [doc.chemsys for doc in docs]
+chemsys = list(dict.fromkeys(chemsys))
+
+docs = mpr.materials.thermo.search(
+    chemsys=chemsys,
+)
 ```
 
 This returns a total of 45197 ThermoDoc with 3372 unique chemsys and 1-8
 elements.
 
 ``` python
-docs = mpr.materials.summary.search(                                                                                
-    elements=["Li", "Ni", "O"],                                                                                              
+docs = mpr.materials.summary.search(
+    elements=["Li", "Ni", "O"],
     fields=["chemsys"]
-)                                                                                                                   
-                                                                                                                    
-chemsys = [doc.chemsys for doc in docs]                                                                             
-chemsys = list(dict.fromkeys(chemsys))                                                                              
-                                                                                                                    
-docs = mpr.materials.thermo.search(                                                                                 
-    chemsys=chemsys,                                                                                                
-)                                                                                                                   
+)
+
+chemsys = [doc.chemsys for doc in docs]
+chemsys = list(dict.fromkeys(chemsys))
+
+docs = mpr.materials.thermo.search(
+    chemsys=chemsys,
+)
 ```
 
 This returns a total of 2828 ThermoDoc with 147 unique chemsys and 3-6
 elements.
-                                                                                                               
+
 
 
 
@@ -118,23 +118,23 @@ elements.
 
     When you try to get a list of `materials_id` from the `materials.summary`
     endpoint and use it as input to the `materials.thermo` endpoint, you can
-    get the following error: 
+    get the following error:
 
     ``` python
     elements=["Li"]
     fields=["nelements", "chemsys"]
-                                                                                                                        
-    docs = mpr.materials.summary.search(                                                                                
-        elements=elements,                                                                                              
-        fields=["material_id"]                                                                                          
-    )                                                                                                                   
-                                                                                                                        
-    material_ids = [doc.material_id for doc in docs]                                                                    
-                                                                                                                        
-    docs = mpr.materials.thermo.search(                                                                                 
-        material_ids=material_ids,                                                                                      
-        fields=fields                                                                                                   
-    )      
+
+    docs = mpr.materials.summary.search(
+        elements=elements,
+        fields=["material_id"]
+    )
+
+    material_ids = [doc.material_id for doc in docs]
+
+    docs = mpr.materials.thermo.search(
+        material_ids=material_ids,
+        fields=fields
+    )
     ```
 
     ```
@@ -153,7 +153,7 @@ elements.
     Each `*` just replace on element in a chemsys. For example:
 
     ```
-    docs = mpr.materials.thermo.search(                                                                                 
+    docs = mpr.materials.thermo.search(
         chemsys=['Li-*', '*-Li']
     )
     ```
@@ -161,7 +161,7 @@ elements.
     gives only binary Li-containing compounds.
 
     ```
-    docs = mpr.materials.thermo.search(                                                                                 
+    docs = mpr.materials.thermo.search(
         chemsys=['Li-*-*', '*-Li-*', '*-*-Li']
     )
     ```
