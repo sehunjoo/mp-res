@@ -49,6 +49,9 @@ elements. You will get 1394 materials with 3-6 elements.
     locally.
     ```
 
+    I would recommend getting a list of `chemsys` instead of `materials_id`.
+
+
 
 !!! warning "wild cards for chemsys"
 
@@ -61,3 +64,6 @@ elements. You will get 1394 materials with 3-6 elements.
         fields=fields                                                                                                   
     )
     ```
+
+    I would recommend getting a list of `chemsys` from the `materials.summary`
+    end point.
