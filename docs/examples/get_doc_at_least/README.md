@@ -5,8 +5,8 @@ list of elements from the Materials Project database.
 
 For example:
 
-- all Li-containing materials (Li + $\alpha$)
-- all materials containing earth abundant O and Si (O + Si + $\alpha$)
+- all Li-containing materials (Li + α)
+- all materials containing earth abundant O and Si (O + Si + α)
 
 
 ## **materials.summary** endpoint
