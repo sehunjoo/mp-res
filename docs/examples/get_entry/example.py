@@ -6,7 +6,7 @@ from pymatgen.io.res import ResIO
 api_key = "d7BCat3ve9lYksDLTojHg3AceBOcN5B9"
 mpr = MPRester(api_key)
 
-def main():
+def ex():
 
     chemsys_formula_mpids = "Li-Ni-O"
 
@@ -111,5 +111,14 @@ def main():
 
         print(seed)
         ResIO.entry_to_file(entry, f"{seed}.res")
+
+def ex1():
+    entries = mpr.get_entries(
+        chemsys_formula_mpids=["Li"]
+    )
+
+
+def main():
+    ex1()
 
 main()

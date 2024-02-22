@@ -1,21 +1,30 @@
 # Retrieve materials project data as ComputedStructureEntry
 
-In the Materials Project databsae, each unique material is given a `material_id
-(also referred to in various places as mp-id, mpid, MPID). This allows a
+!!! note "Note"
+    This is a useful section for anyone who only wants to get data calculated
+    with a specific functional from Materials Project database and save it as
+    files in res format with or without energy correction.
+
+In the Materials Project databsae, each unique material is given a **Material
+ID** (also referred to in various places as mp-id, mpid, MPID). This allows a
 specific polymorph of a given mterial to be referenced.
 
-All of the infromation for a given `material_id` is actually a combination of
+All of the infromation for a given material ID is actually a combination of
 data generated from many individual calcualtions or tasks. An identifier
-referring to an individual calculation task are known as task_id.
+referring to an individual calculation task are known as **Task ID**. For
+example, DFT caluclations with different functionals have different task ID.
 
-Therefore, a unique material have a `material_id` and a collection of multiple
-different `task_id`s associated with it. For more information, please see
+Therefore, a unique material have a material ID and a collection of multiple
+different task IDs associated with it. For more information, please see
 [FAQ](https://docs.materialsproject.org/frequently-asked-questions).
 
 Each set of paramters and data for different tasks of a given material can be
-downloaded through materials.thermo endpoint and stored in
-ComputedStructureEntry that can be **easily converted into `RES` file in AIRSS
-format**.
+downloaded through **materials.thermo** endpoint. The data can be downloded in
+**ComputedStructureEntry** format that can be easily converted to files in **res
+format** as used by AIRSS. The
+[MPRester.get_entries()](https://github.com/materialsproject/api/blob/main/mp_api/client/mprester.py#L661) function does this.
+
+
 
 ## What is ComputedStructureEntry?
 
@@ -26,11 +35,10 @@ object containing the energy associated a specific chemical composition,
 paramaters associated with this entry, and any additional data associated with
 this entry. 
 
-Please refer to `Entry`, `ComputedEntry`, `ComputedStructureEntry` classes in
-[pymatgen.entries package](https://pymatgen.org/pymatgen.entries.html) for
-further details.
-
-!!! info "mp-135"
+!!! abstract "Example: ComputedStructureEntry of mp-135"
+    ``` python
+    print(entry)
+    ```
     ```
     mp-135-GGA ComputedStructureEntry - Li1          (Li)
     Energy (Uncorrected)     = -1.9038   eV (-1.9038  eV/atom)
@@ -53,7 +61,11 @@ further details.
       run_type               = GGA
     ```
 
-!!! info "Inforamtion that ComputedStructureEntry has"
+Please refer to Entry, ComputedEntry, and ComputedStructureEntry classes in
+[pymatgen.entries package](https://pymatgen.org/pymatgen.entries.html) for
+further details.
+
+??? info "How to get the information held by the ComputedStructureEntry"
     We can get access the values or data by
     ```
     entry.entry_id
@@ -83,19 +95,14 @@ further details.
     ```
 
 
-## How to get data as ComputedStructureEntry from Materials Project
+
+## Get entries from the MP database
 
 ---
 
-### Download data
+**mpr.get_entries()** function returns a list of ComputedStructureEntry
 
-`mpr.get_entries()` returns a list of ComputedStructureEntry
-
-``` python
-entries = mpr.get_entries("Li")
-```
-
-!!! info "get_entries() function arguments"
+??? info "Arguments to the get_entries() function"
 
     ``` python
     entries = mpr.get_entries(
@@ -106,31 +113,39 @@ entries = mpr.get_entries("Li")
         additional_criteria=None,
     )
     ```
-    chemsys_formula_mpids (str, List[str]): A chemical system, list of chemical
-systems
-        (e.g., Li-Fe-O, Si-*, [Si-O, Li-Fe-P]), formula, list of formulas
-        (e.g., Fe2O3, Si*, [SiO2, BiFeO3]), Materials Project ID, or list of
-Materials
-        Project IDs (e.g., mp-22526, [mp-22526, mp-149]).
-    compatible_only (bool): Whether to return only "compatible"
+
+    - chemsys_formula_mpids (str, List[str]):
+        A chemical system, list of chemical systems
+        (e.g., Li-Fe-O, Si-*, [Si-O, Li-Fe-P]),
+        formula, list of formulas
+        (e.g., Fe2O3, Si*, [SiO2, BiFeO3]),
+        Materials Project ID, or list of Materials Project IDs
+        (e.g., mp-22526, [mp-22526, mp-149]).
+    - compatible_only (bool): Whether to return only "compatible"
         entries. Compatible entries are entries that have been
         processed using the MaterialsProject2020Compatibility class,
         which performs adjustments to allow mixing of GGA and GGA+U
         calculations for more accurate phase diagrams and reaction
         energies. This data is obtained from the core "thermo" API endpoint.
-    property_data (list): Specify additional properties to include in
-        entry.data. If None, only default data is included. Should be a subset
-of
+    - property_data (list): Specify additional properties to include in
+        entry.data. If None, only default data is included. Should be a subset of
         input parameters in the 'MPRester.thermo.available_fields' list.
-    conventional_unit_cell (bool): Whether to get the standard
+    - conventional_unit_cell (bool): Whether to get the standard
         conventional unit cell
-    additional_criteria (dict): Any additional criteria to pass. The keys and
-values should
-        correspond to proper function inputs to `MPRester.thermo.search`. For
-instance,
-        if you are only interested in entries on the convex hull, you could pass
+    - additional_criteria (dict): Any additional criteria to pass. The keys and
+        values should correspond to proper function inputs to
+        `MPRester.thermo.search`. For instance, if you are only interested in
+        entries on the convex hull, you could pass
         {"energy_above_hull": (0.0, 0.0)} or {"is_stable": True}.
 
+
+``` python
+entries = mpr.get_entries(
+    chemsys_formula_mpids=["Li"]
+)
+```
+This returns a list of StructureComputesEntry for all materials containing only
+Li element.
 
 !!! note "Note"
     ``` python
