@@ -33,9 +33,19 @@ theme:
   favicon: images/favicon.png
 
   features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    # - content.code.select
+    # - content.footnote.tooltips
+    # - content.tabs.link
+    - content.tooltips
+    # - header.autohide
     # - navigation.expand
     - navigation.footer
-    # - navigation.indexes
+    - navigation.indexes
     # - navigation.instant
     # - navigation.instant.prefetch
     # - navigation.instant.progress
@@ -110,11 +120,12 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Examples:
+    - examples/README.md
     - Getting Doc:
-        - "Basic": "examples/available_fields/README.md"
-        - "get X chemical system": "examples/get_doc_chemsys/README.md"
-        - "get X-containig materials": "examples/get_doc_at_least/README.md"
+      - Basic: examples/get_doc/EXAMPLE.md
+      - get X chemical system: examples/get_doc_chemsys/EXAMPLE.md
+      - get X-containig materials: examples/get_doc_elements/EXAMPLE.md
     - Getting Entry:
-        - "Basic": "examples/get_entry/README.md"
-        - "get X chemical system": "examples/get_entry_chemsys/README.md"
-        - "get X-containing materials": "examples/get_entry_elements/README.md"
+      - Basic: examples/get_entry/EXAMPLE.md
+      - get X chemical system: examples/get_entry_chemsys/EXAMPLE.md
+      - get X-containing materials: examples/get_entry_elements/EXAMPLE.md

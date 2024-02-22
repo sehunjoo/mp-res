@@ -1,4 +1,0 @@
-No module named 'phonopy'
-No module named 'phonopy'
-Retrieving data from Materials Project ...
-Elements:  ['Li']
