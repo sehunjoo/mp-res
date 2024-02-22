@@ -1,11 +1,31 @@
 # Retrieve materials project data as ComputedStructureEntry
 
+In the Materials Project databsae, each unique material is given a `material_id
+(also referred to in various places as mp-id, mpid, MPID). This allows a
+specific polymorph of a given mterial to be referenced.
+
+All of the infromation for a given `material_id` is actually a combination of
+data generated from many individual calcualtions or tasks. An identifier
+referring to an individual calculation task are known as task_id.
+
+Therefore, a unique material have a `material_id` and a collection of multiple
+different `task_id`s associated with it. For more information, please see
+[FAQ](https://docs.materialsproject.org/frequently-asked-questions).
+
+Each set of paramters and data for different tasks of a given material can be
+downloaded through materials.thermo endpoint and stored in
+ComputedStructureEntry that can be **easily converted into `RES` file in AIRSS
+format**.
 
 ## What is ComputedStructureEntry?
 
 ---
 
-Entries are containers for calculated information in pymatgen.
+Entry is an container for calculated information. ComputedStructuerEntry is a
+object containing the energy associated a specific chemical composition,
+paramaters associated with this entry, and any additional data associated with
+this entry. 
+
 Please refer to `Entry`, `ComputedEntry`, `ComputedStructureEntry` classes in
 [pymatgen.entries package](https://pymatgen.org/pymatgen.entries.html) for
 further details.
@@ -39,10 +59,12 @@ further details.
     entry.entry_id
     entry.composition
     entry.elements
-    entry.energy
-    entry.energy_per_atom
     entry.uncorrected_energy
     entry.uncorrected_energy_per_atom
+    entry.conrrection
+    entry.correction_per_atom
+    entry.energy
+    entry.energy_per_atom
     entry.parameters
     entry.data
     entry.structure
