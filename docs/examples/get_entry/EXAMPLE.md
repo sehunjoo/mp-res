@@ -33,7 +33,7 @@ format** as used by AIRSS. The
 Entry is an container for calculated information. ComputedStructuerEntry is a
 object containing the energy associated a specific chemical composition,
 paramaters associated with this entry, and any additional data associated with
-this entry. 
+this entry.
 
 !!! abstract "Example: ComputedStructureEntry of mp-135"
     ``` python
@@ -138,44 +138,94 @@ further details.
         entries on the convex hull, you could pass
         {"energy_above_hull": (0.0, 0.0)} or {"is_stable": True}.
 
+    There are more functions to get entries, but they are high-level functions
+    based on `get_entries()`.
+
+    ``` python
+    entries = mpr.get_entries_in_chemsys(elements=["Li", "Ni", "O"])
+    entries = mpr.get_entry_by_material_id(material_id="mp-135")
+    ```
+
 
 ``` python
-entries = mpr.get_entries(
-    chemsys_formula_mpids=["Li"]
-)
+entries = mpr.get_entries(                                                                                          
+    chemsys_formula_mpids=["Li"]                                                                                    
+)                                                                                                                   
+                                                                                                                    
+for i, entry in enumerate(entries):                                                                                 
+    print(f"\nEntry {i+1}\n")                                                                                       
+    print(entry) 
 ```
+
 This returns a list of StructureComputesEntry for all materials containing only
 Li element.
 
-!!! note "Note"
-    ``` python
-    print(type(entries))
+- 25 StructureComputesEntry
+- 9 unique material IDs
+- 16 unique task IDs
+- 2 unique run type : GGA, R2SCAN
 
-    for entry in entries:
-        print(type(entry))
+
+``` python
+entries = mpr.get_entries(                                                                                          
+    chemsys_formula_mpids=["Li"],                                                                                   
+    property_data=["chemsys", "nelements", "thermo_type"]                                                           
+)                                                                                                                   
+                                                                                                                    
+for i, entry in enumerate(entries):                                                                                 
+    print(f"\nEntry {i+1}\n")                                                                                       
+    print(entry)  
+```
+
+If you specify property_data, entry.data includes additional properties. This
+returns a list of StructureComputedEntry for all binary materials containing
+only Li and O elements.
+
+- 25 ComputedStructureEntry
+- 9 unique material IDs
+- 16 unique task IDs
+- 2 unique run_type: GGA, R2SCAN
+- 1 unique chemsys: Li
+- 1 unique nelements: 1
+
+
+``` python
+entries = mpr.get_entries(                                                                                          
+    chemsys_formula_mpids=["Li"],                                                                                   
+    property_data=["chemsys", "nelements", "thermo_type"],                                                          
+    additional_criteria={"is_stable": True}                                                                         
+)                                                                                                                   
+                                                                                                                    
+for i, entry in enumerate(entries):                                                                                 
+    print(f"\nEntry {i+1}\n")                                                                                       
+    print(entry)  
+```
+
+If you specify additional_criteria with {"is_stable": True}, only the materials
+on the convex hull are downloaded. This returns a list of ComputedStructureEntry
+for all ternary materials containing only Li-Ni-O elements.
+
+- 3 ComputedStructureEntry
+- 1 unique material IDs
+- 2 unique task IDs
+- 2 unique run_type: GGA, R2SCAN
+- 1 unique chemsys: Li
+- 1 unique nelements: 1
+
+
+
+???+ note "Note"
+    There are multiple entries for a single material_id.
+    Even for the same_material_id, task_id, run_type, there can be multiple entries.
+    Each with different _thermo_type.
+    ```
+    material_id  task_id      run_type  thermo_type       chemsys       uncorrected_energy  correction    corrected_energy
+    mp-1960      mp-1440823   GGA       GGA_GGA+U         Li-O                  -14.263600   -0.687000          -14.950600
+    mp-1960      mp-1949896   R2SCAN    R2SCAN            Li-O                  -16.826560    0.000000          -16.826560
+    mp-1960      mp-1949896   R2SCAN    GGA_GGA+U_R2SCAN  Li-O                  -16.826560    1.875960          -14.950600
     ```
 
-    The type of entries is `<class 'list'>`.
-    The type of each entry in the list is `<class 'pymatgen.entries.computed_entries.ComputedStructureEntry'>`
 
-There are more functions to get entries, but they are high-level functions
-based on `get_entries()`.
-
-``` python
-entries = mpr.get_entries_in_chemsys(elements=["Li", "Ni", "O"])
-entries = mpr.get_entry_by_material_id(material_id="mp-135")
-```
-
-### Get properties from ComputedStructureEntry
-
-``` python
-entries = mpr.get_entries("Li")
-
-for entry in entries:
-    print("-"*100)
-    print(type(entry))
-    print("-"*100)
-```
 
 
 ### Save to RES files

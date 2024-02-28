@@ -115,12 +115,14 @@ def ex():
 
 def analyze_entries(entries):
 
-    fields = ["material_id", "task_id", "run_type", "chemsys", "nelements", "thermo_type"]
+    material_id_set = set()
+    task_id_set = set()
+    run_type_set = set()
+    chemsys_set = set()
+    nelements_set = set()
+    thermo_type_set = set()
 
-    data_unique = {field: set() for field in fields}
-    data_nunique = {field: 0 for field in fields}
-
-    str_entries = " ".join([
+    entries_str = " ".join([
         f"{'material_id':12s}",
         f"{'task_id':12s}",
         f"{'run_type':9s}",
@@ -132,7 +134,7 @@ def analyze_entries(entries):
     ]) + "\n"
 
     for entry in entries:
-        str_entry = " ".join([
+        entry_str = " ".join([
             f"{entry.data.get('material_id','NaN'):12s}",
             f"{entry.data.get('task_id', 'NaN'):12s}",
             f"{entry.data.get('run_type', 'NaN'):9s}",
@@ -142,37 +144,43 @@ def analyze_entries(entries):
             f"{entry.correction:11f}",
             f"{entry.energy:19f}"
         ])
-        str_entries += str_entry + "\n"
+        entries_str += entry_str + "\n"
 
-        for key in data_unique:
-            data_unique[key].add(entry.data.get(key))
+        material_id_set.add(entry.data.get("material_id"))
+        task_id_set.add(entry.data.get("task_id"))
+        run_type_set.add(entry.data.get("run_type"))
+        chemsys_set.add(entry.data.get("chemsys"))
+        nelements_set.add(entry.data.get("nelements"))
+ 
+    material_id_list = list(material_id_set)
+    task_id_list = list(task_id_set)
+    chemsys_list = [item for item in chemsys_set if item is not None]
+    nelements_list = [item for item in nelements_set if item is not None]
 
 
-    str_unique = ""
-    str_nunique = f"{'ComputedStructureEntry':25s} = {len(entries)}\n"
+    unique_str = "\n".join([
 
-    for field in fields:
-
-        if field == 'thermo_type':
-            unique = [str(i) for i in data_unique[field] if i is not None]
-        else:
-            unique = [i for i in data_unique[field] if i is not None]
-
-        data_unique[field] = unique
-        data_nunique[field] = len(unique)
-
-        str_unique += f"{field:25s} = {data_unique[field]}\n"
-        str_nunique += f"{field:25s} = {data_nunique[field]}\n"
-
+        '-'*100,
+        f"# ComputedStructureEntry = {len(entries)}",
+        f"# material_id            = {len(material_id_list)}",
+        f"# task_id                = {len(task_id_list)}",
+        f"# chemsys                = {len(chemsys_list)}",
+        f"# elements               = {len(nelements_list)}",
+        '-'*100,
+        f"material_id              = {material_id_list}",
+        f"task_id                  = {task_id_list}",
+        f"chemsys                  = {chemsys_list}",
+        f"elements                 = {nelements_list.sort()}",
+        '-'*100,
+        ""
+    ])
 
     with open("out_entries.txt", 'w') as file:
-        file.write(str_entries)
+        file.write(entries_str)
 
     with open("out_unique.txt", 'w') as file:
-        file.write(str_unique)
+        file.write(unique_str)
 
-    with open("out_nunique.txt", 'w') as file:
-        file.write(str_nunique)
 
 def ex1():
 
@@ -215,42 +223,25 @@ def ex3():
     print("\nExample 3\n")
 
     entries = mpr.get_entries(
-        chemsys_formula_mpids=["Li"],
-        property_data=["chemsys", "nelements", "thermo_type"],
+        chemsys_formula_mpids=["Li-Ni-O"],
+        property_data=["chemsys", "nelements"],
         additional_criteria={"is_stable": True}
     )
 
-    for i, entry in enumerate(entries):
-        print(f"\nEntry {i+1}\n")
+    for entry in entries:
+        print()
         print(entry)
+        print()
 
     # for analysis
 
     analyze_entries(entries)
 
-
-def ex4():
-
-    print("\nExample 3\n")
-
-    entries = mpr.get_entries(
-        chemsys_formula_mpids=["Li", "Ni", "O", "Li-Ni", "Li-O", "Ni-O", "Li-Ni-O"],
-        property_data=["chemsys", "nelements", "thermo_type"],
-        additional_criteria={"is_stable": True}
-    )
-
-    for i, entry in enumerate(entries):
-        print(f"\nEntry {i+1}\n")
-        print(entry)
-
-    # for analysis
-
-    analyze_entries(entries)
 
 def main():
     #ex1()
-    #ex2()
+    ex2()
     #ex3()
-    ex4()
+    #ex()
 
 main()

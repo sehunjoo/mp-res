@@ -1,0 +1,7 @@
+ComputedStructureEntry    = 37
+material_id               = 18
+task_id                   = 25
+run_type                  = 3
+chemsys                   = 6
+nelements                 = 3
+thermo_type               = 3
