@@ -1,9 +1,10 @@
 # Save to a file in res format
 
-You can save a structure to a file in res using pymatgen.
-ASE does not support the AIRSS-RES format.
+Once we download the data from the Materials Project database, we can directly
+save structures to files in AIRSS-RES format using Pymatgen package.
+ASE package does not support the AIRSS-RES format.
 
-!!! note "AIRSS-RES" format
+!!! note "AIRSS-RES format"
 
     ```
     TITL <seed> <pressure> <volume> <energy> <isd> <iasd> <nfu> <formula> <space group> <#>

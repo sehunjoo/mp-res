@@ -13,7 +13,6 @@ def mp_entry_to_res(entry):
     '''
     Writing a res files with an uncorrected energy
     '''
-    print(entry)
     # make energy correction zero
     entry.correction = 0
 
@@ -63,10 +62,10 @@ def mp_entry_to_res(entry):
     # write a resfile
 
     ResIO.entry_to_file(entry, f"{seed}.res")
-    print(entry)
 
 
-def ex1():
+
+def main():
 
     print("\nExample 1\n")
 
@@ -75,16 +74,8 @@ def ex1():
     )
 
     for i, entry in enumerate(entries):
-        print(f"\nEntry {i}\n")
+        print(f"\nEntry {i+1}\n")
         print(entry)
         mp_entry_to_res(entry)
-
-
-
-
-
-
-def main():
-    ex1()
 
 main()
