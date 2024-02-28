@@ -36,7 +36,7 @@ paramaters associated with this entry, and any additional data associated with
 this entry.
 
 !!! abstract "Example: ComputedStructureEntry of mp-135"
-    ``` python
+    ```
     print(entry)
     ```
     ```
@@ -104,7 +104,7 @@ further details.
 
 ??? info "Arguments to the get_entries() function"
 
-    ``` python
+    ```
     entries = mpr.get_entries(
         chemsys_formula_mpids
         compatible_only=True,
@@ -141,20 +141,20 @@ further details.
     There are more functions to get entries, but they are high-level functions
     based on `get_entries()`.
 
-    ``` python
+    ```
     entries = mpr.get_entries_in_chemsys(elements=["Li", "Ni", "O"])
     entries = mpr.get_entry_by_material_id(material_id="mp-135")
     ```
 
 
-``` python
-entries = mpr.get_entries(                                                                                          
-    chemsys_formula_mpids=["Li"]                                                                                    
-)                                                                                                                   
-                                                                                                                    
-for i, entry in enumerate(entries):                                                                                 
-    print(f"\nEntry {i+1}\n")                                                                                       
-    print(entry) 
+```
+entries = mpr.get_entries(
+    chemsys_formula_mpids=["Li"]
+)
+
+for i, entry in enumerate(entries):
+    print(f"\nEntry {i+1}\n")
+    print(entry)
 ```
 
 This returns a list of StructureComputesEntry for all materials containing only
@@ -166,15 +166,15 @@ Li element.
 - 2 unique run type : GGA, R2SCAN
 
 
-``` python
-entries = mpr.get_entries(                                                                                          
-    chemsys_formula_mpids=["Li"],                                                                                   
-    property_data=["chemsys", "nelements", "thermo_type"]                                                           
-)                                                                                                                   
-                                                                                                                    
-for i, entry in enumerate(entries):                                                                                 
-    print(f"\nEntry {i+1}\n")                                                                                       
-    print(entry)  
+```
+entries = mpr.get_entries(
+    chemsys_formula_mpids=["Li"],
+    property_data=["chemsys", "nelements", "thermo_type"]
+)
+
+for i, entry in enumerate(entries):
+    print(f"\nEntry {i+1}\n")
+    print(entry)
 ```
 
 If you specify property_data, entry.data includes additional properties. This
@@ -189,16 +189,16 @@ only Li and O elements.
 - 1 unique nelements: 1
 
 
-``` python
-entries = mpr.get_entries(                                                                                          
-    chemsys_formula_mpids=["Li"],                                                                                   
-    property_data=["chemsys", "nelements", "thermo_type"],                                                          
-    additional_criteria={"is_stable": True}                                                                         
-)                                                                                                                   
-                                                                                                                    
-for i, entry in enumerate(entries):                                                                                 
-    print(f"\nEntry {i+1}\n")                                                                                       
-    print(entry)  
+```
+entries = mpr.get_entries(
+    chemsys_formula_mpids=["Li"],
+    property_data=["chemsys", "nelements", "thermo_type"],
+    additional_criteria={"is_stable": True}
+)
+
+for i, entry in enumerate(entries):
+    print(f"\nEntry {i+1}\n")
+    print(entry)
 ```
 
 If you specify additional_criteria with {"is_stable": True}, only the materials
@@ -230,7 +230,7 @@ for all ternary materials containing only Li-Ni-O elements.
 
 ### Save to RES files
 
-``` python
+```
 for entry in entries:
 
     material_id = entry.data.get("material_id", "mp-")
