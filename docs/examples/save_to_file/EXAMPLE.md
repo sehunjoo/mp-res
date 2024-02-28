@@ -9,15 +9,14 @@ ASE package does not support the AIRSS-RES format.
     ```
     TITL <seed> <pressure> <volume> <energy> <isd> <iasd> <nfu> <formula> <space group> <#>
     ```
-
-    seed        = unique structure name or file name
-    volume      = volume / cell
-    energy      = enthalpy / cell
-    isd         = integrated spin density / cell
-    iasd        = integrated absolute spin density / cell
-    nfu         = number of formula untis
-    formula     = formula
-    space group = space group
+    - seed        = unique structure name or file name
+    - volume      = volume / cell
+    - energy      = enthalpy / cell
+    - isd         = integrated spin density / cell
+    - iasd        = integrated absolute spin density / cell
+    - nfu         = number of formula untis
+    - formula     = formula
+    - space group = space group
 
 
 ## Get ComputedStructureEntry
