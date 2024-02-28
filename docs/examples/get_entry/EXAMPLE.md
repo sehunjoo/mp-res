@@ -26,7 +26,7 @@ format** as used by AIRSS. The
 
 
 
-## What is ComputedStructureEntry?
+## **What is ComputedStructureEntry?**
 
 ---
 
@@ -96,11 +96,17 @@ further details.
 
 
 
-## Get entries from the MP database
+## **Get entries from the MP database**
 
 ---
 
 **mpr.get_entries()** function returns a list of ComputedStructureEntry
+
+```
+entries = mpr.get_entries(
+    chemsys_formula_mpids=chemsys
+)
+```
 
 ??? info "Arguments to the get_entries() function"
 
@@ -146,6 +152,7 @@ further details.
     entries = mpr.get_entry_by_material_id(material_id="mp-135")
     ```
 
+### Example - get entries
 
 ```
 entries = mpr.get_entries(
@@ -165,6 +172,7 @@ Li element.
 - 16 unique task IDs
 - 2 unique run type : GGA, R2SCAN
 
+### Example - get entries selectively
 
 ```
 entries = mpr.get_entries(
@@ -227,72 +235,4 @@ for all ternary materials containing only Li-Ni-O elements.
 
 
 
-
-### Save to RES files
-
-```
-for entry in entries:
-
-    material_id = entry.data.get("material_id", "mp-")
-    task_id = entry.data.get("task_id", "mp-")
-    run_type = entry.data.get("run_type", "")
-
-    seed = f"{material_id}-{run_type}-{task_id}"
-    rems = [
-            f"",
-            f'Downloaded from the Materials Project database',
-            f"",
-            f"Energy (Uncorrected)     = {entry.uncorrected_energy:<16.8f} eV",
-            f"Correction               = {entry.correction:<16.8f} eV",
-            f"Energy (Final)           = {entry.energy:<16.8f} eV",
-            f"",
-            f"material_id              = {material_id}",
-            f"run_type                 = {run_type}",
-            f"task_id                  = {task_id}",
-            f""
-    ]
-
-    entry.data.setdefault("seed", seed)
-    entry.data.setdefault("rems", rems)
-
-    print(seed)
-    ResIO.entry_to_file(entry, f"{seed}.res")
-```
-
-
-!!! bug "Save to a RES file without REM"
-    A blank line is created between the TITL line and the CELL line.
-    ```
-    TITL mp-135-R2SCAN-mp-1943895 0.00 20.3416 -2.37706 0.000000 0.000000 (Im-3m) n - 1
-
-    CELL 1.00000 2.97853 2.97853 2.97853 109.47122 109.47122 109.47121
-    LATT -1
-    SFAC Li
-    Li     1  0.00000000 0.00000000 0.00000000 1.000000  0.00
-    END
-    ```
-
-!!! bug "END without new line"
-    You should add `+ "\n"` at the end of Res class in `res.py` as follows:
-    ```
-    @dataclass(frozen=True)
-    class Res:
-        """Representation for the data in a res file."""
-
-        TITL: AirssTITL | None
-        REMS: list[str]
-        CELL: ResCELL
-        SFAC: ResSFAC
-
-        def __str__(self) -> str:
-            return "\n".join(
-                [
-                    "TITL" if self.TITL is None else str(self.TITL),
-                    "\n".join(f"REM {rem}" for rem in self.REMS),
-                    str(self.CELL),
-                    "LATT -1",
-                    str(self.SFAC),
-                ]
-            ) + "\n"
-    ```
 

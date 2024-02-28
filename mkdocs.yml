@@ -129,3 +129,5 @@ nav:
       - Basic: examples/get_entry/EXAMPLE.md
       - get X chemical system: examples/get_entry_chemsys/EXAMPLE.md
       - get X-containing materials: examples/get_entry_elements/EXAMPLE.md
+    - Save to res file:
+      - examples/save_to_file/EXAMPLE.md

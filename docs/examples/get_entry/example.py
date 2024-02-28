@@ -207,14 +207,17 @@ def ex4():
     print("\nExample 3\n")
 
     entries = mpr.get_entries(
-        chemsys_formula_mpids=["Li", "Ni", "O", "Li-Ni", "Li-O", "Ni-O", "Li-Ni-O"],
+        #chemsys_formula_mpids=["Li", "Ni", "O", "Li-Ni", "Li-O", "Ni-O", "Li-Ni-O"],
+        chemsys_formula_mpids=["Li-O"],
         property_data=["chemsys", "nelements", "thermo_type"],
         additional_criteria={"is_stable": True}
     )
 
+    '''
     for i, entry in enumerate(entries):
         print(f"\nEntry {i+1}\n")
         print(entry)
+    '''
 
     # for analysis
 
@@ -223,11 +226,29 @@ def ex4():
     # Save to a resfile with REM lines
     for entry in entries:
 
-        material_id = entry.data.get("material_id", "mp-")
-        task_id = entry.data.get("task_id", "mp-")
+        material_id = entry.data.get("material_id", "")
+        task_id = entry.data.get("task_id", "")
         run_type = entry.data.get("run_type", "")
 
-        seed = f"{material_id}-{run_type}-{task_id}"
+        # add seed
+
+        seed = f"{material_id}-{run_type}"
+        entry.data.update({"seed": seed})                                                                                 
+
+        # add integrated spin density
+
+        isd = 0
+        iasd = 0
+        for site in entry.structure:
+            if 'magmom' in site.properties:
+                 isd += site.properties['magmom']
+                 iasd += abs(site.properties['magmom'])
+
+        entry.data.update({"isd": isd})                                                                                 
+        entry.data.update({"iasd": iasd})                                                                                 
+
+        # add metadata in rems
+
         rems = [
                 f"",
                 f'Downloaded from the Materials Project database',
@@ -242,11 +263,15 @@ def ex4():
                 f""
         ]
 
-        entry.data.setdefault("seed", seed)
-        entry.data.setdefault("rems", rems)
+        entry.data.update({"rems": rems})                                                                                
 
-        print(seed)
+        # Writing TITL lines with uncorrected energy
+        entry.correction = 0
+
         ResIO.entry_to_file(entry, f"{seed}.res")
+
+
+
 def main():
     #ex1()
     #ex2()
