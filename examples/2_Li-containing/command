@@ -1,0 +1,4 @@
+mp2res.py  -el Li -m atleast < /dev/null &> mp2res.log  &
+mp2res.py  -el Li -m atleast -de 0.000 < /dev/null &> mp2res_de0.log  &
+mp2res.py  -el Li -m atleast -de 0.010 < /dev/null &> mp2res_de10.log  &
+mp2res.py  -el Li -m atleast -de 0.100 < /dev/null &> mp2res_de100.log &

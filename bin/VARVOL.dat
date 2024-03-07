@@ -1,0 +1,4 @@
+chemsys,energy_above_hull,varvol,note
+
+mp-Li-Ni-O-de0 VARVOL=7.8-20.4
+mp-Li-Ni-O     VARVOL=7.5-23.3   # exclude strange3D (mp-1213623,mp-1209929) 2D (mp-1094136,mp-1014111)

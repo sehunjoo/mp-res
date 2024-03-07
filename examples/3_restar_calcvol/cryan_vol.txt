@@ -1,0 +1,18 @@
+all
+min    :      7.838
+max    :     20.402
+mean   :     10.939
+median :      9.211
+
+element
+min    :     10.492
+max    :     20.402
+mean   :     16.131
+median :     17.288
+
+compound
+min    :      7.838
+max    :     11.297
+mean   :      8.920
+median :      8.704
+

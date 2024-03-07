@@ -1,0 +1,4 @@
+mp2res.py  -el Li,Ni,O -m only-or < /dev/null &>> mp2res.log
+mp2res.py  -el Li,Ni,O -m only-or -eah 0 < /dev/null &>> mp2res.log
+mp2res.py  -el Li,Ni,O -m only-or -eah 100 < /dev/null &>> mp2res.log
+
