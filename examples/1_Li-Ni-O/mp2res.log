@@ -13,7 +13,7 @@ No module named 'phonopy'
 
 chemsys:
  ['Li', 'Ni', 'O', 'Li-Ni', 'Li-O', 'Ni-O', 'Li-Ni-O']
-Retrieving ThermoDoc documents:   0%|          | 0/526 [00:00<?, ?it/s]Retrieving ThermoDoc documents: 100%|██████████| 526/526 [00:00<00:00, 5656933.09it/s]
+Retrieving ThermoDoc documents:   0%|          | 0/526 [00:00<?, ?it/s]Retrieving ThermoDoc documents: 100%|██████████| 526/526 [00:00<00:00, 5142666.44it/s]
 No module named 'phonopy'
 No module named 'phonopy'
 
@@ -29,7 +29,7 @@ No module named 'phonopy'
 
 chemsys:
  ['Li', 'Ni', 'O', 'Li-Ni', 'Li-O', 'Ni-O', 'Li-Ni-O']
-Retrieving ThermoDoc documents:   0%|          | 0/37 [00:00<?, ?it/s]Retrieving ThermoDoc documents: 100%|██████████| 37/37 [00:00<00:00, 335907.46it/s]
+Retrieving ThermoDoc documents:   0%|          | 0/37 [00:00<?, ?it/s]Retrieving ThermoDoc documents: 100%|██████████| 37/37 [00:00<00:00, 368620.54it/s]
 No module named 'phonopy'
 No module named 'phonopy'
 
@@ -45,4 +45,4 @@ No module named 'phonopy'
 
 chemsys:
  ['Li', 'Ni', 'O', 'Li-Ni', 'Li-O', 'Ni-O', 'Li-Ni-O']
-Retrieving ThermoDoc documents:   0%|          | 0/376 [00:00<?, ?it/s]Retrieving ThermoDoc documents: 100%|██████████| 376/376 [00:00<00:00, 3952527.08it/s]
+Retrieving ThermoDoc documents:   0%|          | 0/376 [00:00<?, ?it/s]Retrieving ThermoDoc documents: 100%|██████████| 376/376 [00:00<00:00, 6463353.70it/s]
