@@ -47,8 +47,8 @@ class CryanAtoms():
         ]
         sorted_lines = sorted(
             lines,
-            #key=lambda line: (len(line.split()[5]), line.split()[5], -float(line.split()[3]))
-            key=lambda line: (float(line.split()[2]))
+            key=lambda line: (len(line.split()[5]), line.split()[5], -float(line.split()[3]))
+            #key=lambda line: (float(line.split()[2]))
         )
         return "\n".join(sorted_lines)
 

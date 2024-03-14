@@ -36,7 +36,7 @@ def get_args():
     parser.add_argument('-eah', '--energy_above_hull', type=float, dest='eah',
                         default=None,
                         help='Energy above hull (meV/atom)')
-    parser.add_argument('-nsites', '--nsites', type=float, dest='nsites',
+    parser.add_argument('-nsites', '--nsites', type=int, dest='nsites',
                         default=None,
                         help='Maximum number of ions/atoms/sites')
     args = parser.parse_args()
@@ -118,7 +118,6 @@ def get_chemsys_from_elements(
         )
         chemsys.extend({doc.chemsys for doc in docs})
 
-    else:
         raise ValueError(f"Unsupported mode: {mode}")
 
     return chemsys
@@ -152,19 +151,22 @@ def get_mp_entry(
     if eah:
         if eah >= 0:
             additional_criteria = {"energy_above_hull": (0.0, eah/1000)}
+        else:
+            raise ValueError(f"energy_above_hull should be positive")
     if nsites:
-        if property_data = ["nsites"]
+        property_data = ["nsites"]
 
     entries = mpr.get_entries(
         chemsys_formula_mpids=chemsys,
         compatible_only=True,
-        property_data=None,
+        property_data=property_data,
         conventional_unit_cell=False,
         additional_criteria=additional_criteria
     )
 
+    print(entries[0])
     if nsites:
-        entries = [entry for entry in entries if entry.data.get('nsites') < nsites]
+        entries = [entry for entry in entries if entry.data.get('nsites', -1) < nsites]
 
     return entries
 
@@ -279,21 +281,22 @@ def main():
 
     # Download data from the Materials Project database
 
-
     entries = get_mp_entry(
         chemsys=chemsys,
         eah=eah,
-        nsites=nsties
+        nsites=nsites
     )
 
     # Write res files
-
     entries = [mp_entry_to_res_entry(entry) for entry in entries]
 
-    tarname = '-'.join(elements) + '.res.tar'
-
-    if eah is not None:
-        tarname = '-'.join(elements) + f"_eah{int(eah)}" +  '.res.tar'
+    tarname = '-'.join(elements)
+    if eah:
+        if eah >= 0:
+            tarname += f"_eah{int(eah)}"
+    if nsites:
+        tarname += f"_nsites{nsites}"
+    tarname += '.res.tar'
 
     entries_to_restar(entries, tarname)
 

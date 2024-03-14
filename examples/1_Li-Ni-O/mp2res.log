@@ -1,48 +1,0 @@
-No module named 'phonopy'
-No module named 'phonopy'
-
-     mp2res.py
-
-       Author: Se Hun Joo (shj29@cam.ac.uk)
-
-       Summary of arguments
-
-         eah                 : None
-         elements            : Li,Ni,O
-         mode                : only-or
-
-chemsys:
- ['Li', 'Ni', 'O', 'Li-Ni', 'Li-O', 'Ni-O', 'Li-Ni-O']
-Retrieving ThermoDoc documents:   0%|          | 0/526 [00:00<?, ?it/s]Retrieving ThermoDoc documents: 100%|██████████| 526/526 [00:00<00:00, 5142666.44it/s]
-No module named 'phonopy'
-No module named 'phonopy'
-
-     mp2res.py
-
-       Author: Se Hun Joo (shj29@cam.ac.uk)
-
-       Summary of arguments
-
-         eah                 : 0.0
-         elements            : Li,Ni,O
-         mode                : only-or
-
-chemsys:
- ['Li', 'Ni', 'O', 'Li-Ni', 'Li-O', 'Ni-O', 'Li-Ni-O']
-Retrieving ThermoDoc documents:   0%|          | 0/37 [00:00<?, ?it/s]Retrieving ThermoDoc documents: 100%|██████████| 37/37 [00:00<00:00, 368620.54it/s]
-No module named 'phonopy'
-No module named 'phonopy'
-
-     mp2res.py
-
-       Author: Se Hun Joo (shj29@cam.ac.uk)
-
-       Summary of arguments
-
-         eah                 : 100.0
-         elements            : Li,Ni,O
-         mode                : only-or
-
-chemsys:
- ['Li', 'Ni', 'O', 'Li-Ni', 'Li-O', 'Ni-O', 'Li-Ni-O']
-Retrieving ThermoDoc documents:   0%|          | 0/376 [00:00<?, ?it/s]Retrieving ThermoDoc documents: 100%|██████████| 376/376 [00:00<00:00, 6463353.70it/s]

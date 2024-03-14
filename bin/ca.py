@@ -24,5 +24,6 @@ for filename in filenames:
         print(f"Warning: {filename}")
 
 cryan = CryanAtoms(structures)
-print(cryan)
+#print(cryan)
+print(cryan.to_str_per_atom())
 print(cryan.summary())
