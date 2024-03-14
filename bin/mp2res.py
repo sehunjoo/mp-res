@@ -164,7 +164,6 @@ def get_mp_entry(
         additional_criteria=additional_criteria
     )
 
-    print(entries[0])
     if nsites:
         entries = [entry for entry in entries if entry.data.get('nsites', -1) < nsites]
 
