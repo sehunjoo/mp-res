@@ -31,11 +31,14 @@ def get_args():
                         default=None,
                         help='Comma separated list of elements')
     parser.add_argument('-m', '--mode', type=str, dest='mode',
-                        default='only-and',
+                        default='and',
                         help='Nmode')
     parser.add_argument('-eah', '--energy_above_hull', type=float, dest='eah',
                         default=None,
                         help='Energy above hull (meV/atom)')
+    parser.add_argument('-nsites', '--nsites', type=float, dest='nsites',
+                        default=None,
+                        help='Maximum number of ions/atoms/sites')
     args = parser.parse_args()
 
 
@@ -82,15 +85,15 @@ def get_chemsys_from_elements(
         elements (List[str]): List of chemical element symbols
                               (e.g., ["Li", "Ni", "O"]).
         mode (str): Mode for generating chemical systems. Options include
-                    "only-and" for a single system containing all elements,
-                    "only-or" for all possible combinations of elements, and
+                    "and" for a single system containing all elements,
+                    "or" for all possible combinations of elements, and
                     "atleast" for systems containing at least the specified
                     elements. "atleast" mode requires an external API call
                     and is not implemented in this function.
         nelements (int): Specifies the number of elements in the generated
                          systems. A value of 0 indicates all possible
                          combinations. For binary systems, set to 2.
-                         This parameter is ignored in "only-and" mode.
+                         This parameter is ignored in "and" mode.
 
     Returns:
         List[str]: List of chemical systems, each a string of element symbols
@@ -99,10 +102,10 @@ def get_chemsys_from_elements(
 
     chemsys = []
 
-    if mode == "only-and":
+    if mode == "and":
         chemsys.append("-".join(sorted(elements)))
 
-    elif mode == "only-or":
+    elif mode == "or":
         nrange = range(1, len(elements) + 1) if nelements == 0 else [nelements]
         for n in nrange:
             for combo in itertools.combinations(elements, n):
@@ -128,10 +131,14 @@ def get_chemsys_from_elements(
 
 def get_mp_entry(
     chemsys: str | list[str],
-    eah: float | None = None
+    eah: float | None = None,
+    nsites: float | None = None,
 ):
     """
     Download entries from the Materials Poject database
+    Referece
+    https://github.com/materialsproject/api/blob/main/mp_api/client/mprester.py
+    https://github.com/materialsproject/api/blob/main/mp_api/client/routes/materials/thermo.py
 
     Args:
         chemsys (str | list[str]): Chemical systems
@@ -139,19 +146,27 @@ def get_mp_entry(
     Returns:
         list[ComputedStructureEntry]
     """
+    property_data = None
     additional_criteria = None
 
-    if isinstance(eah, float):
+    if eah:
         if eah >= 0:
-            additional_criteria={"energy_above_hull": (0.0, eah/1000)}
+            additional_criteria = {"energy_above_hull": (0.0, eah/1000)}
+    if nsites:
+        if property_data = ["nsites"]
 
-    return mpr.get_entries(
+    entries = mpr.get_entries(
         chemsys_formula_mpids=chemsys,
         compatible_only=True,
         property_data=None,
         conventional_unit_cell=False,
         additional_criteria=additional_criteria
     )
+
+    if nsites:
+        entries = [entry for entry in entries if entry.data.get('nsites') < nsites]
+
+    return entries
 
 
 #==============================================================================
@@ -251,6 +266,7 @@ def main():
 
     mode = args.mode
     eah = args.eah
+    nsites = args.nsites
 
 
     # Generate query
@@ -266,7 +282,8 @@ def main():
 
     entries = get_mp_entry(
         chemsys=chemsys,
-        eah=eah
+        eah=eah,
+        nsites=nsties
     )
 
     # Write res files

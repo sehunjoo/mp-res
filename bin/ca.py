@@ -3,14 +3,26 @@
 import sys
 
 from cryan import CryanAtoms
-from restar import ResTar
+from res import Res, ConcatRes, ResTar
 
 
 # Main
 
-restar = ResTar.read_as_atoms(sys.argv[1])
+filenames = sys.argv[1:]
 
-cryan = CryanAtoms(restar.structures)
+structures = []
+fmt='ase'
 
+for filename in filenames:
+    if filename.endswith('res.tar'):
+        restar = ResTar.from_file(filename, fmt=fmt)
+        structures += restar.structures
+    elif filename.endswith('.res'):
+        concatres = ConcatRes.from_file(filename, fmt=fmt)
+        structures += concatres.structures
+    else:
+        print(f"Warning: {filename}")
+
+cryan = CryanAtoms(structures)
 print(cryan)
 print(cryan.summary())
