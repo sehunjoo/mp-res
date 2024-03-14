@@ -1,0 +1,43 @@
+/bin/bash
+
+set -e
+
+if [ $# -lt 0 ]; then
+    echo 1>&2 "usage: $(basename $0) <delta_e>"
+    exit 127
+fi
+
+
+de=$1
+
+[[ -z $de ]] && de=10000
+
+
+echo
+echo -e "--------------------------------------------------------------"
+echo -e "All structures within the energy window (0.3 eV/atom ~ 3481 K)"
+echo -e "--------------------------------------------------------------"
+
+echo -e "\nenergy window : $de eV/atom\n"
+
+
+# Minimum separation range
+
+minsep_data=$(ca -de $de -g 2>/dev/null | grep MINSEP | awk '{for(i=2;i<=NF;i++) {printf "%s ", $i} printf "\n"}')
+npairs=$(echo "${minsep_data}" | awk '{print NF; exit}')
+
+minsep_string="#MINSEP=1.0"
+for (( i=1; i<=$npairs; i++ ))
+do
+    pair_list=$(echo "${minsep_data}" | awk -v col=$i '{print $col}' | grep -v '0.00' | sort); #echo "$pair_list"
+    pair_name=$(echo "${pair_list}" | head -n 1 | awk 'BEGIN{FS="="}{print $1}'); #echo "$pair_name"
+    pair_values=$(echo "${pair_list}" | awk 'BEGIN{FS="="}{print $2}'); #echo "$pair_values"
+    pair_min=$(echo "${pair_values}" | head -n 1)
+    pair_max=$(echo "${pair_values}" | tail -n 1)
+    minsep_string="${minsep_string} ${pair_name}=${pair_min}-${pair_max}"
+    min_max="${min_max}\n${pair_min}\t${pair_max}"
+done
+
+echo "$minsep_string"
+echo -e "$min_max"
+echo
