@@ -5,6 +5,7 @@ Read/Write *.res, data.res, *.res.tar
 """
 
 import tarfile
+import lzma
 
 from ase import Atoms
 from ase.io.res import Res as aseRes  # Res, read_res, write_res
@@ -127,8 +128,12 @@ class ConcatRes():
         """
         Read a concatenated res file as a list of ASE Atoms object.
         """
-        with open(filename, 'r') as f:
-            return cls.ase_atoms_from_str(f.read())
+        if filename.endswith('.res'):
+            with open(filename, 'r') as f:
+                return cls.ase_atoms_from_str(f.read())
+        elif filename.endswith('.res.xz'):
+            with lzma.open(filename, "rt") as f:
+                return cls.ase_atoms_from_str(f.read())
 
     @classmethod
     def ase_atoms_from_str(cls, string: str) -> list[Atoms]:
@@ -150,8 +155,12 @@ class ConcatRes():
         """
         Read a res file as Pymatgen ComputedStructureEntry object
         """
-        with open(filename, 'r') as f:
-            return cls.pymatgen_entry_from_str(f.read())
+        if filename.endswith('.res'):
+            with open(filename, 'r') as f:
+                return cls.pymatgen_entry_from_str(f.read())
+        elif filename.endswith('.res.xz'):
+            with lzma.open(filename, "rt") as f:
+                return cls.pymatgen_entry_from_str(f.read())
 
     @classmethod
     def pymatgen_entry_from_str(cls, string: str
@@ -198,8 +207,12 @@ class ResTar():
         """
         Read a restar file as a list of ASE Atoms objects
         """
+        if tarname.endswith('.xz'):
+            mode = 'r:xz'
+        else:
+            mode = 'r'
         structures = []
-        with tarfile.open(tarname, 'r') as tar:
+        with tarfile.open(tarname, mode) as tar:
             for member in tar.getmembers():
                 if member.isfile() and member.name.endswith('.res'):
                     res_obj = tar.extractfile(member)
@@ -218,8 +231,12 @@ class ResTar():
         """
         Read a restar file as a list of pymatgen ComputedStructureEntry objects
         """
+        if tarname.endswith('.xz'):
+            mode = 'r:xz'
+        else:
+            mode = 'r'
         structures = []
-        with tarfile.open(tarname, 'r') as tar:
+        with tarfile.open(tarname, mode) as tar:
             for member in tar.getmembers():
                 if member.isfile() and member.name.endswith('.res'):
                     res_obj = tar.extractfile(member)

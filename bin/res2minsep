@@ -1,4 +1,4 @@
-/bin/bash
+#!/bin/bash
 
 set -e
 
@@ -35,9 +35,9 @@ do
     pair_min=$(echo "${pair_values}" | head -n 1)
     pair_max=$(echo "${pair_values}" | tail -n 1)
     minsep_string="${minsep_string} ${pair_name}=${pair_min}-${pair_max}"
-    min_max="${min_max}\n${pair_min}\t${pair_max}"
+    min_max="${min_max}\n${pair_name}\t${pair_min}\t${pair_max}"
 done
 
 echo "$minsep_string"
-echo -e "$min_max"
+echo -e "$min_max" | sort -k2 -n
 echo

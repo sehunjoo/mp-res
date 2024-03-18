@@ -18,39 +18,44 @@ class CryanAtoms():
         self.add_info_init()
 
     def __str__(self):
-        lines = [
-            f"{st.info.get('name'):<20}"
-            f" {st.info.get('pressure'):>8.2f}"
-            f" {st.info.get('volume')/st.info.get('nfu'):>9.3f}"
-            f" {st.info.get('energy')/st.info.get('nfu'):>11.3f}"
-            f" {st.info.get('nfu'):4d}"
-            f" {st.info.get('formula'):15s}"
-            f" {st.info.get('spacegroup'):<10}"
-            for st in self.structures
-        ]
-        sorted_lines = sorted(
-            lines,
-            key=lambda line: (len(line.split()[5]), line.split()[5], -float(line.split()[3]))
-        )
+        return self.to_str()
+
+    def to_str(self, norm: str='formula', sort: str='energy'):
+        # construct strings
+        if norm == 'formula':
+            lines = [
+                f"{st.info.get('name'):<30}"
+                f" {st.info.get('pressure'):>8.2f}"
+                f" {st.info.get('volume')/st.info.get('nfu'):>9.3f}"
+                f" {st.info.get('energy')/st.info.get('nfu'):>11.3f}"
+                f" {st.info.get('nfu'):4d}"
+                f" {st.info.get('formula'):15s}"
+                f" {st.info.get('spacegroup'):<10}"
+                for st in self.structures
+            ]
+        elif norm == 'atom':
+            lines = [
+                f"{st.info.get('name'):<30}"
+                f" {st.info.get('pressure'):>8.2f}"
+                f" {st.info.get('volume')/st.info.get('natoms'):>9.3f}"
+                f" {st.info.get('energy')/st.info.get('natoms'):>11.3f}"
+                f" {st.info.get('natoms'):4d}"
+                f" {st.info.get('formula'):15s}"
+                f" {st.info.get('spacegroup'):<10}"
+                for st in self.structures
+            ]
+        # sort strings
+        if sort == 'energy':
+            key = lambda line: (len(line.split()[5]), line.split()[5], -float(line.split()[3]))
+        elif sort == 'pressure':
+            key = lambda line: (float(line.split()[1]))
+        elif sort == 'volume':
+            key = lambda line: (float(line.split()[2]))
+        
+        sorted_lines = sorted(lines, key=key)
+
         return "\n".join(sorted_lines)
 
-    def to_str_per_atom(self):
-        lines = [
-            f"{st.info.get('name'):<20}"
-            f" {st.info.get('pressure'):>8.2f}"
-            f" {st.info.get('volume')/st.info.get('natoms'):>9.3f}"
-            f" {st.info.get('energy')/st.info.get('natoms'):>11.3f}"
-            f" {st.info.get('natoms'):4d}"
-            f" {st.info.get('formula'):15s}"
-            f" {st.info.get('spacegroup'):<10}"
-            for st in self.structures
-        ]
-        sorted_lines = sorted(
-            lines,
-            key=lambda line: (len(line.split()[5]), line.split()[5], -float(line.split()[3]))
-            #key=lambda line: (float(line.split()[2]))
-        )
-        return "\n".join(sorted_lines)
 
     def add_info_init(self):
         for st in self.structures:
@@ -89,6 +94,91 @@ class CryanAtoms():
             f"Number of structures   : {self.nstructures():6}",
             f"Number of compositions : {self.ncompositions():6}"
         ])
+
+    def calc_stat(self, v: list):
+        """
+        Calculate statistical properteis
+        """
+        array = np.array(v)
+        return {
+            'array': array,
+            'min': np.min(array),
+            'max': np.max(array),
+            'mean': np.mean(array),
+            'median': np.median(array),
+        }
+
+    def plot_histogram(self,
+        data,
+        figname: str | None = None,
+        xlabel: str='data',
+        bin_width: float = 0.5,
+        xmin: float | None = None,
+        xmax: float | None = None, 
+    ):
+
+        bin_width = bin_width
+        xlabel = xlabel
+
+        min = np.min(data)
+        max = np.max(data)
+        mean = np.mean(data)
+        median = np.median(data)
+        nbins = np.ceil((max - min) / bin_width).astype(int)
+        bins = np.arange(min, max + bin_width, bin_width)
+
+        # Plot
+
+        plt.rcParams['figure.dpi'] = 300
+        aspect_ratio = 4/3 
+        width = 4
+        height = width / aspect_ratio
+
+        # Figure
+
+        fig, ax = plt.subplots(1, 1, figsize=(width, height))
+
+        ax.hist(data, bins=bins, rwidth=0.85, color='gray')
+        ax.axvline(mean, color='black', linestyle='dashed', linewidth=0.5, label=f'Mean: {mean:.2f}')
+        ax.axvline(median, color='black', linestyle='dotted', linewidth=0.5, label=f'Median: {median:.2f}')
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel('Frequency')
+        if xmin and xmax:
+            ax.set_xlim(xmin, xmax)
+        ax.legend(frameon=False)
+
+        # Save
+
+        plt.tight_layout()
+
+        if figname:
+            fig.savefig(figname, dpi=300, bbox_inches='tight')
+
+        plt.show()
+
+
+    def calc_press(self):
+
+        press = [st.info.get('pressure') for st in self.structures]
+        stat = self.calc_stat(press)
+        output = (
+            f"Pressure (GPa): {stat['min']:6.2f}-{stat['max']:.2f}"
+            + f"  (mean = {stat['mean']:6.2f}, median = {stat['median']:6.2f})"
+        )
+        self.plot_histogram(press,
+            figname='cryan_press.png',
+            xlabel='Pressure (GPa)',
+            bin_width=1.0
+        )
+        self.plot_histogram(press,
+            figname='cryan_press_xlim.png',
+            xlabel='Pressure (GPa)',
+            bin_width=1.0,
+            xmin=-50,
+            xmax=100
+        )
+        print(output)
+
 
 
     def calc_vol(self):
