@@ -165,7 +165,7 @@ def get_mp_entry(
     )
 
     if nsites:
-        entries = [entry for entry in entries if entry.data.get('nsites', -1) < nsites]
+        entries = [entry for entry in entries if entry.data.get('nsites', -1) <= nsites]
 
     return entries
 
