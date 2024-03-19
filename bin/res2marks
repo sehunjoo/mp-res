@@ -4,9 +4,9 @@ rm -rf marks
 
 mkdir marks
 
-ca -sn 1 -r 2>/dev/null | awk '{print $1}' | sed -r 's/-GGA\+U//' | sed 's/-R2SCAN//' | sed 's/-GGA//' | sort -n | uniq > marks/marks.txt
+ca -r 2>/dev/null | awk '{print $1}' | sed -r 's/-GGA\+U//' | sed 's/-R2SCAN//' | sed 's/-GGA//' | sort -n | uniq > marks/marks.txt
 
-for seed in $(ca -sn 1 -r 2>/dev/null | awk '{print $1}')
+for seed in $(ca -r 2>/dev/null | awk '{print $1}')
 do
     rescat $seed > marks/$seed.res
 done
