@@ -113,8 +113,7 @@ class CryanAtoms():
         figname: str | None = None,
         xlabel: str='data',
         bin_width: float = 0.5,
-        xmin: float | None = None,
-        xmax: float | None = None, 
+        xlim: tuple | None = None,
     ):
 
         bin_width = bin_width
@@ -143,8 +142,8 @@ class CryanAtoms():
         ax.axvline(median, color='black', linestyle='dotted', linewidth=0.5, label=f'Median: {median:.2f}')
         ax.set_xlabel(xlabel)
         ax.set_ylabel('Frequency')
-        if xmin and xmax:
-            ax.set_xlim(xmin, xmax)
+        if xlim:
+            ax.set_xlim(xlim)
         ax.legend(frameon=False)
 
         # Save
@@ -174,8 +173,7 @@ class CryanAtoms():
             figname='cryan_press_xlim.png',
             xlabel='Pressure (GPa)',
             bin_width=1.0,
-            xmin=-50,
-            xmax=100
+            xlim=(-50,100),
         )
         print(output)
 
@@ -224,26 +222,27 @@ class CryanAtoms():
             f.write("\n".join(vol_str) + "\n")
 
 
-        # Plot
+        # Figure 1
+        self.plot_histogram(vol['all'],
+            figname='cryan_vol.png',
+            xlabel=r'Volume (Å$^{3}$/atom)',
+            bin_width=0.5,
+        )
+        self.plot_histogram(vol['all'],
+            figname='cryan_vol_xlim.png',
+            xlabel=r'Volume (Å$^{3}$/atom)',
+            bin_width=0.5,
+            xlim=(0,24),
+        )
+
+
+        # Figure 2
 
         plt.rcParams['figure.dpi'] = 300
 
         aspect_ratio = 4/3 
         width = 4
         height = width / aspect_ratio
-
-        # Figure 1
-
-        fig, ax = plt.subplots(1, 1, figsize=(width, height))
-
-        ax.hist(vol['all'], bins=bins, rwidth=0.85, color='gray')
-        ax.set_xlabel(r'Volume (Å$^{3}$/atom)')
-        ax.set_ylabel('Frequency')
-
-        plt.tight_layout()
-        fig.savefig('cryan_vol_all.png', dpi=300, bbox_inches='tight')
-
-        # Figure 2
 
         fig, axs = plt.subplots(2, 1, figsize=(width, height))
 
