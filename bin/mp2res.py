@@ -230,6 +230,12 @@ def mp_entry_to_res_entry(entry):
 
 def entries_to_restar(entries, tarname):
     filelist = []
+
+    material_id = {entry.data.get("material_id") for entry in entries}
+    seed = {entry.data.get("seed") for entry in entries}
+    print(f"Number of materials: {len(material_id)}")
+    print(f"Number of res files: {len(seed)}")
+
     with tarfile.open(tarname, 'a') as tar:
         for entry in entries:
 
