@@ -1,0 +1,71 @@
+No module named 'phonopy'
+No module named 'phonopy'
+
+Example 1
+
+
+Entry 1
+
+mp-841-R2SCAN ComputedStructureEntry - Li4 O4       (Li2O2)
+Energy (Uncorrected)     = -46.0899  eV (-5.7612  eV/atom)
+Correction               = 5.4610    eV (0.6826   eV/atom)
+Energy (Final)           = -40.6289  eV (-5.0786  eV/atom)
+Energy Adjustments:
+  MP GGA(+U)/R2SCAN mixing adjustment: 5.4610    eV (0.6826   eV/atom)
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}, {'titel': 'PAW_PBE O 08Apr2002', 'hash': '9bb4b91e6c47f70fd2bce603bd5d6832'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = peroxide
+  aspherical             = True
+  last_updated           = 2021-03-16 23:19:24.577000
+  task_id                = mp-2049708
+  material_id            = mp-841
+  oxidation_states       = {'Li': 1.0, 'O': -1.0}
+  run_type               = R2SCAN
+
+Entry 2
+
+mp-841-R2SCAN ComputedStructureEntry - Li4 O4       (Li2O2)
+Energy (Uncorrected)     = -46.0899  eV (-5.7612  eV/atom)
+Correction               = 0.0000    eV (0.0000   eV/atom)
+Energy (Final)           = -46.0899  eV (-5.7612  eV/atom)
+Energy Adjustments:
+  None
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 10Sep2004', 'hash': 'a90726231bc9f5bf4ed8ed5d40a2b04f'}, {'titel': 'PAW_PBE O 08Apr2002', 'hash': '9bb4b91e6c47f70fd2bce603bd5d6832'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = R2SCAN
+Data:
+  oxide_type             = peroxide
+  aspherical             = True
+  last_updated           = 2021-03-16 23:19:24.577000
+  task_id                = mp-2049708
+  material_id            = mp-841
+  oxidation_states       = {'Li': 1.0, 'O': -1.0}
+  run_type               = R2SCAN
+
+Entry 3
+
+mp-841-GGA ComputedStructureEntry - Li4 O4       (Li2O2)
+Energy (Uncorrected)     = -38.7689  eV (-4.8461  eV/atom)
+Correction               = -1.8600   eV (-0.2325  eV/atom)
+Energy (Final)           = -40.6289  eV (-5.0786  eV/atom)
+Energy Adjustments:
+  MP2020 anion correction (peroxide): -1.8600   eV (-0.2325  eV/atom)
+Parameters:
+  potcar_spec            = [{'titel': 'PAW_PBE Li_sv 23Jan2001', 'hash': '4799bab014a83a07c654d7196c8ecfa9'}, {'titel': 'PAW_PBE O 08Apr2002', 'hash': '7a25bc5b9a5393f46600a4939d357982'}]
+  is_hubbard             = False
+  hubbards               = {}
+  run_type               = GGA
+Data:
+  oxide_type             = peroxide
+  aspherical             = True
+  last_updated           = 2020-05-03 10:33:29.375000
+  task_id                = mp-1422354
+  material_id            = mp-841
+  oxidation_states       = {'Li': 1.0, 'O': -1.0}
+  run_type               = GGA

@@ -1,0 +1,9 @@
+material_id  task_id      run_type  thermo_type       chemsys       uncorrected_energy  correction    corrected_energy
+mp-1235059   mp-1796952   GGA       GGA_GGA+U_R2SCAN  Li-O                  -44.048233   -1.288000          -45.336233
+mp-841       mp-2049708   R2SCAN    GGA_GGA+U_R2SCAN  Li-O                  -46.089874    5.460976          -40.628897
+mp-841       mp-2049708   R2SCAN    R2SCAN            Li-O                  -46.089874    0.000000          -46.089874
+mp-1960      mp-1949896   R2SCAN    GGA_GGA+U_R2SCAN  Li-O                  -16.826560    1.875960          -14.950600
+mp-1960      mp-1949896   R2SCAN    R2SCAN            Li-O                  -16.826560    0.000000          -16.826560
+mp-841       mp-1422354   GGA       GGA_GGA+U         Li-O                  -38.768897   -1.860000          -40.628897
+mp-1235059   mp-1796952   GGA       GGA_GGA+U         Li-O                  -44.048233   -1.288000          -45.336233
+mp-1960      mp-1440823   GGA       GGA_GGA+U         Li-O                  -14.263600   -0.687000          -14.950600

@@ -1,0 +1,6 @@
+material_id               = ['mp-1960', 'mp-1235059', 'mp-841']
+task_id                   = ['mp-1440823', 'mp-1949896', 'mp-2049708', 'mp-1796952', 'mp-1422354']
+run_type                  = ['R2SCAN', 'GGA']
+chemsys                   = ['Li-O']
+nelements                 = [2]
+thermo_type               = ['R2SCAN', 'GGA_GGA+U_R2SCAN', 'GGA_GGA+U']

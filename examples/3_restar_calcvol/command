@@ -1,0 +1,4 @@
+mp2res.py  -el Li,Ni,O -m only-or
+mp2res.py  -el Li,Ni,O -m only-or -de 0.000
+mp2res.py  -el Li,Ni,O -m only-or -de 0.100
+

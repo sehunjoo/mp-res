@@ -1,0 +1,7 @@
+ComputedStructureEntry    = 8
+material_id               = 3
+task_id                   = 5
+run_type                  = 2
+chemsys                   = 1
+nelements                 = 1
+thermo_type               = 3
