@@ -153,7 +153,7 @@ class CryanAtoms():
         if figname:
             fig.savefig(figname, dpi=300, bbox_inches='tight')
 
-        plt.show()
+        #plt.show()
 
 
     def calc_press(self):
@@ -255,7 +255,7 @@ class CryanAtoms():
         plt.tight_layout()
         fig.savefig('cryan_vol_cmp.png', dpi=300, bbox_inches='tight')
 
-        plt.show()
+       # plt.show()
 
 
 
@@ -358,4 +358,4 @@ class CryanAtoms():
         plt.tight_layout()
         fig.savefig('cryan_rdf.png', dpi=300, bbox_inches='tight')
         
-        plt.show()
+        #plt.show()
